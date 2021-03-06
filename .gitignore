@@ -70,3 +70,10 @@ fastlane/.env*
 
 # Ruby gems
 vendor/
+
+# CodeTemplater
+templater/Generate/*
+templater/Validate/*
+templater/Prepare/*
+templater/Contexts/*
+templater/CodeTemplaterPersonal.json
