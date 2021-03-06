@@ -9,7 +9,7 @@
 // Configuration settings file format documentation can be found at:
 // https://help.apple.com/xcode/#/dev745c5c974
 
-APP_BUNDLE_NAME = STRV_template (DEV)
-APP_BUNDLE_IDENTIFIER = enterprise.com.strv.STRV_template.dev
+APP_BUNDLE_NAME = FactsAboutChuck (DEV)
+APP_BUNDLE_IDENTIFIER = enterprise.com.strv.FactsAboutChuck.dev
 
 API_BASE_URL = https:/$()/ios-nights.herokuapp.com/

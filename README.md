@@ -56,7 +56,7 @@ You can use Github Actions workflows to automate deployment and run integrations
 
 __Called by: `make setup`__
 
-If you want to rename the project from `STRV_template` to something different (and you probably want that) just run:
+If you want to rename the project from `FactsAboutChuck` to something different (and you probably want that) just run:
 ```
 make rename PROJECT_NAME={YOUR_PROJECT_NAME}
 ```

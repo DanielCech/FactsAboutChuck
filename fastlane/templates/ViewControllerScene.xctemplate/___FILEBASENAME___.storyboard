@@ -13,7 +13,7 @@
         <!--___FILEBASENAMEASIDENTIFIER___-->
         <scene sceneID="cRK-YK-bfP">
             <objects>
-                <viewController id="Yeo-G4-eQc" customClass="___FILEBASENAMEASIDENTIFIER___" customModule="STRV_template" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Yeo-G4-eQc" customClass="___FILEBASENAMEASIDENTIFIER___" customModule="FactsAboutChuck" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="no1-v9-KWE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

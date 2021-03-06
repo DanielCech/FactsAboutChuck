@@ -22,11 +22,11 @@ abstract_target 'defaults' do
 
   # App
 
-  target 'STRV_template'
+  target 'FactsAboutChuck'
 
   # Unit tests
 
-  target 'STRV_template Tests' do
+  target 'FactsAboutChuck Tests' do
       pod 'DeallocTests', '~> 1.0.1'
   end
 end

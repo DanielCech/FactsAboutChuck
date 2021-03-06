@@ -1,6 +1,6 @@
 //
 //  Staging.xcconfig
-//  STRV_template
+//  FactsAboutChuck
 //
 //  Created by Jan Pacek on 10/06/2020.
 //  Copyright © 2020 STRV. All rights reserved.
@@ -9,7 +9,7 @@
 // Configuration settings file format documentation can be found at:
 // https://help.apple.com/xcode/#/dev745c5c974
 
-APP_BUNDLE_NAME = STRV_template (STG)
-APP_BUNDLE_IDENTIFIER = enterprise.com.strv.STRV_template.staging
+APP_BUNDLE_NAME = FactsAboutChuck (STG)
+APP_BUNDLE_IDENTIFIER = enterprise.com.strv.FactsAboutChuck.staging
 
 API_BASE_URL = https:/$()/ios-nights.herokuapp.com/
