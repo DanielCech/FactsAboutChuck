@@ -1,0 +1,108 @@
+PODS:
+  - Alamofire (5.2.2)
+  - AlamofireEasyLogger (1.5.0):
+    - Alamofire (>= 5.0)
+  - DeallocTests (1.0.1):
+    - DeallocTests/SwinjectBased (= 1.0.1)
+  - DeallocTests/SwinjectBased (1.0.1):
+    - Swinject (~> 2.7.0)
+  - Differentiator (4.0.1)
+  - Moya/Core (14.0.0):
+    - Alamofire (~> 5.0)
+  - Moya/RxSwift (14.0.0):
+    - Moya/Core
+    - RxSwift (~> 5.0)
+  - ObjcExceptionBridging (1.0.1):
+    - ObjcExceptionBridging/ObjcExceptionBridging (= 1.0.1)
+  - ObjcExceptionBridging/ObjcExceptionBridging (1.0.1)
+  - R.swift (5.2.2):
+    - R.swift.Library (~> 5.2.0)
+  - R.swift.Library (5.2.0)
+  - RxCocoa (5.1.1):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxDataSources (4.0.1):
+    - Differentiator (~> 4.0)
+    - RxCocoa (~> 5.0)
+    - RxSwift (~> 5.0)
+  - RxOptional (4.1.0):
+    - RxCocoa (~> 5)
+    - RxSwift (~> 5)
+  - RxRelay (5.1.1):
+    - RxSwift (~> 5)
+  - RxSwift (5.1.1)
+  - RxSwiftExt (5.2.0):
+    - RxSwiftExt/Core (= 5.2.0)
+    - RxSwiftExt/RxCocoa (= 5.2.0)
+  - RxSwiftExt/Core (5.2.0):
+    - RxSwift (~> 5.0)
+  - RxSwiftExt/RxCocoa (5.2.0):
+    - RxCocoa (~> 5.0)
+    - RxSwiftExt/Core
+  - SwiftFormat/CLI (0.46.3)
+  - SwiftLint (0.40.3)
+  - Swinject (2.7.1)
+  - XCGLogger (7.0.1):
+    - XCGLogger/Core (= 7.0.1)
+  - XCGLogger/Core (7.0.1):
+    - ObjcExceptionBridging
+
+DEPENDENCIES:
+  - AlamofireEasyLogger (~> 1.5)
+  - DeallocTests (~> 1.0.1)
+  - Moya/RxSwift (~> 14.0.0)
+  - R.swift (~> 5.2.0)
+  - RxCocoa (~> 5.1.0)
+  - RxDataSources (~> 4.0)
+  - RxOptional (~> 4.0)
+  - RxSwift (~> 5.1.0)
+  - RxSwiftExt (~> 5)
+  - SwiftFormat/CLI (~> 0.46)
+  - SwiftLint (~> 0.40)
+  - Swinject (~> 2.7.0)
+  - XCGLogger (~> 7.0.0)
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - AlamofireEasyLogger
+    - DeallocTests
+    - Differentiator
+    - Moya
+    - ObjcExceptionBridging
+    - R.swift
+    - R.swift.Library
+    - RxCocoa
+    - RxDataSources
+    - RxOptional
+    - RxRelay
+    - RxSwift
+    - RxSwiftExt
+    - SwiftFormat
+    - SwiftLint
+    - Swinject
+    - XCGLogger
+
+SPEC CHECKSUMS:
+  Alamofire: 814429acc853c6c54ff123fc3d2ef66803823ce0
+  AlamofireEasyLogger: 9a5f2048574b5fa1e02c3e7608599febee85beda
+  DeallocTests: 952d22f7b5d165c2b1c3492188bd99d10bab25e6
+  Differentiator: 886080237d9f87f322641dedbc5be257061b0602
+  Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
+  ObjcExceptionBridging: c30e00eb3700467e695faeea30e26e18bd445001
+  R.swift: 7c52cdc57a66840ffe6cbd8a823d732059d42a32
+  R.swift.Library: 5ba4f1631300caf9a4d890186930da85d540769d
+  RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
+  RxDataSources: efee07fa4de48477eca0a4611e6d11e2da9c1114
+  RxOptional: b1fcd60856807a564c0215c2184b8d33e7826dc2
+  RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
+  RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
+  RxSwiftExt: 4ca80336f43c28f11a2825cdd2fc61dd6c044697
+  SwiftFormat: b639417da9e024b9e782f917bc9a080cf75bcb37
+  SwiftLint: dfd554ff0dff17288ee574814ccdd5cea85d76f7
+  Swinject: ddf78b8486dd9b71a667b852cad919ab4484478e
+  XCGLogger: 1943831ef907df55108b0b18657953f868de973b
+
+PODFILE CHECKSUM: fd98b58324d28fa8cede10a17b4028d8904fff38
+
+COCOAPODS: 1.9.3
