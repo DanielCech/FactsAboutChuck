@@ -29,9 +29,6 @@
 		274E4D1A247BCD5900755251 /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 274E4D18247BCD5900755251 /* ViewModelType.swift */; };
 		27E33AA1247B1F330064A437 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E33A9F247B1F330064A437 /* APIManager.swift */; };
 		27E33AA2247B1F330064A437 /* APIManaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E33AA0247B1F330064A437 /* APIManaging.swift */; };
-		27FAC4302479D452002F2A33 /* SpecificViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FAC3E82479D452002F2A33 /* SpecificViewModel.swift */; };
-		27FAC4312479D452002F2A33 /* SpecificViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27FAC3E92479D452002F2A33 /* SpecificViewController.storyboard */; };
-		27FAC4322479D452002F2A33 /* SpecificViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FAC3EA2479D452002F2A33 /* SpecificViewController.swift */; };
 		27FAC4342479D452002F2A33 /* ActiveSceneSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FAC3ED2479D452002F2A33 /* ActiveSceneSession.swift */; };
 		27FAC4352479D452002F2A33 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27FAC3EE2479D452002F2A33 /* LaunchScreen.storyboard */; };
 		27FAC4362479D452002F2A33 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FAC3F02479D452002F2A33 /* AppDelegate.swift */; };
@@ -69,9 +66,6 @@
 		9DA5A5E93F3C92D78C95F7E9 /* Pods_defaults_FactsAboutChuck_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63F7BCFE887AA7F035E434D7 /* Pods_defaults_FactsAboutChuck_Tests.framework */; };
 		C10117B624DD751800EBAE2B /* ViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10117B424DD751800EBAE2B /* ViewControllerCoordinator.swift */; };
 		C10117B724DD751800EBAE2B /* ParentCoordinatorContaining.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10117B524DD751800EBAE2B /* ParentCoordinatorContaining.swift */; };
-		C10117BD24DD75B500EBAE2B /* SpecificCoordinatorEventHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10117BA24DD75B500EBAE2B /* SpecificCoordinatorEventHandling.swift */; };
-		C10117BE24DD75B500EBAE2B /* SpecificViewEventHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10117BB24DD75B500EBAE2B /* SpecificViewEventHandling.swift */; };
-		C10117BF24DD75B500EBAE2B /* SpecificCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10117BC24DD75B500EBAE2B /* SpecificCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,9 +102,6 @@
 		274E4D18247BCD5900755251 /* ViewModelType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
 		27E33A9F247B1F330064A437 /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		27E33AA0247B1F330064A437 /* APIManaging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManaging.swift; sourceTree = "<group>"; };
-		27FAC3E82479D452002F2A33 /* SpecificViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecificViewModel.swift; sourceTree = "<group>"; };
-		27FAC3E92479D452002F2A33 /* SpecificViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SpecificViewController.storyboard; sourceTree = "<group>"; };
-		27FAC3EA2479D452002F2A33 /* SpecificViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecificViewController.swift; sourceTree = "<group>"; };
 		27FAC3ED2479D452002F2A33 /* ActiveSceneSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActiveSceneSession.swift; sourceTree = "<group>"; };
 		27FAC3EF2479D452002F2A33 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		27FAC3F02479D452002F2A33 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -167,9 +158,6 @@
 		BEBDD865834184ED2E95ACEF /* Pods-defaults-FactsAboutChuck Tests.staging - release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-defaults-FactsAboutChuck Tests.staging - release.xcconfig"; path = "Target Support Files/Pods-defaults-FactsAboutChuck Tests/Pods-defaults-FactsAboutChuck Tests.staging - release.xcconfig"; sourceTree = "<group>"; };
 		C10117B424DD751800EBAE2B /* ViewControllerCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerCoordinator.swift; sourceTree = "<group>"; };
 		C10117B524DD751800EBAE2B /* ParentCoordinatorContaining.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParentCoordinatorContaining.swift; sourceTree = "<group>"; };
-		C10117BA24DD75B500EBAE2B /* SpecificCoordinatorEventHandling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecificCoordinatorEventHandling.swift; sourceTree = "<group>"; };
-		C10117BB24DD75B500EBAE2B /* SpecificViewEventHandling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecificViewEventHandling.swift; sourceTree = "<group>"; };
-		C10117BC24DD75B500EBAE2B /* SpecificCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecificCoordinator.swift; sourceTree = "<group>"; };
 		C15A8EBD23069EEA00F7FCA8 /* Production.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Production.xcconfig; sourceTree = "<group>"; };
 		C15A8EBE23069EEA00F7FCA8 /* Development.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Development.xcconfig; sourceTree = "<group>"; };
 		E66CA9C678BBFB2FB20700AB /* Pods-defaults-FactsAboutChuck.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-defaults-FactsAboutChuck.release.xcconfig"; path = "Target Support Files/Pods-defaults-FactsAboutChuck/Pods-defaults-FactsAboutChuck.release.xcconfig"; sourceTree = "<group>"; };
@@ -327,20 +315,8 @@
 			isa = PBXGroup;
 			children = (
 				27742DDC247D6582003DDAC8 /* LaunchScreen */,
-				27FAC3E72479D452002F2A33 /* SpecificScene */,
 			);
 			path = Scenes;
-			sourceTree = "<group>";
-		};
-		27FAC3E72479D452002F2A33 /* SpecificScene */ = {
-			isa = PBXGroup;
-			children = (
-				C10117B924DD759800EBAE2B /* Coordinator */,
-				C10117B824DD758E00EBAE2B /* ViewModel */,
-				27FAC3E92479D452002F2A33 /* SpecificViewController.storyboard */,
-				27FAC3EA2479D452002F2A33 /* SpecificViewController.swift */,
-			);
-			path = SpecificScene;
 			sourceTree = "<group>";
 		};
 		27FAC3EB2479D452002F2A33 /* Application */ = {
@@ -559,24 +535,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		C10117B824DD758E00EBAE2B /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				27FAC3E82479D452002F2A33 /* SpecificViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		C10117B924DD759800EBAE2B /* Coordinator */ = {
-			isa = PBXGroup;
-			children = (
-				C10117BC24DD75B500EBAE2B /* SpecificCoordinator.swift */,
-				C10117BA24DD75B500EBAE2B /* SpecificCoordinatorEventHandling.swift */,
-				C10117BB24DD75B500EBAE2B /* SpecificViewEventHandling.swift */,
-			);
-			path = Coordinator;
-			sourceTree = "<group>";
-		};
 		C15A8EBC23069EB300F7FCA8 /* Configurations */ = {
 			isa = PBXGroup;
 			children = (
@@ -676,7 +634,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				27FAC44B2479D452002F2A33 /* Localizable.strings in Resources */,
-				27FAC4312479D452002F2A33 /* SpecificViewController.storyboard in Resources */,
 				27FAC4352479D452002F2A33 /* LaunchScreen.storyboard in Resources */,
 				27FAC44A2479D452002F2A33 /* Assets.xcassets in Resources */,
 			);
@@ -816,7 +773,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				27FAC4362479D452002F2A33 /* AppDelegate.swift in Sources */,
-				C10117BE24DD75B500EBAE2B /* SpecificViewEventHandling.swift in Sources */,
 				272D8251251CDCAC002A380E /* UISceneDelegate+AppCoordinator.swift in Sources */,
 				27FAC45D2479D452002F2A33 /* ServiceAssembly.swift in Sources */,
 				C10117B724DD751800EBAE2B /* ParentCoordinatorContaining.swift in Sources */,
@@ -835,11 +791,9 @@
 				27E33AA2247B1F330064A437 /* APIManaging.swift in Sources */,
 				274E4D1A247BCD5900755251 /* ViewModelType.swift in Sources */,
 				272D824C251CDCAC002A380E /* Collection+Convenience.swift in Sources */,
-				27FAC4302479D452002F2A33 /* SpecificViewModel.swift in Sources */,
 				27FAC43A2479D452002F2A33 /* SceneManifest.swift in Sources */,
 				27FAC4622479D452002F2A33 /* NibNameIdentifiable.swift in Sources */,
 				27FAC43D2479D452002F2A33 /* Configuration.swift in Sources */,
-				C10117BF24DD75B500EBAE2B /* SpecificCoordinator.swift in Sources */,
 				27FAC4412479D452002F2A33 /* NavigationControllerCoordinator.swift in Sources */,
 				272D8252251CDCAC002A380E /* UICollectionView+RegistrationHelpers.swift in Sources */,
 				27FAC4342479D452002F2A33 /* ActiveSceneSession.swift in Sources */,
@@ -847,7 +801,6 @@
 				272D8250251CDCAC002A380E /* UIWindowSceneDelegate+Convenience.swift in Sources */,
 				27FAC4422479D452002F2A33 /* SceneCoordinating.swift in Sources */,
 				2F240E6E21B185FA00E93D36 /* R.generated.swift in Sources */,
-				27FAC4322479D452002F2A33 /* SpecificViewController.swift in Sources */,
 				27FAC4652479D452002F2A33 /* StoryboardInit.swift in Sources */,
 				274E4D19247BCD5900755251 /* ViewModelContaining.swift in Sources */,
 				27FAC43C2479D452002F2A33 /* SceneConfigurationsContainer.swift in Sources */,
@@ -855,7 +808,6 @@
 				27FAC43F2479D452002F2A33 /* AppCoordinating.swift in Sources */,
 				27FAC45F2479D452002F2A33 /* ManagerAssembly.swift in Sources */,
 				27FAC4392479D452002F2A33 /* SceneDelegate.swift in Sources */,
-				C10117BD24DD75B500EBAE2B /* SpecificCoordinatorEventHandling.swift in Sources */,
 				27FAC45E2479D452002F2A33 /* ViewModelAssembly.swift in Sources */,
 				27E33AA1247B1F330064A437 /* APIManager.swift in Sources */,
 				272D824E251CDCAC002A380E /* UIViewController+Alerts.swift in Sources */,

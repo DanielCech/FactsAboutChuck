@@ -33,18 +33,18 @@ extension InitialSceneCoordinator: InitialSceneCoordinating {
     }
 }
 
-// MARK: - SpecificCoordinatorEventHandling
-extension InitialSceneCoordinator: SpecificCoordinatorEventHandling {
-    func handle(event _: SpecificCoordinatorEvent) {
-        // TODO: Handle event
-    }
-}
-
-// MARK: - Factories
-private extension InitialSceneCoordinator {
-    func makeSpecificView() -> SpecificCoordinator {
-        let coordinator = SpecificCoordinator(assembler: assembler, parent: self)
-
-        return coordinator
-    }
-}
+//// MARK: - SpecificCoordinatorEventHandling
+// extension InitialSceneCoordinator: SpecificCoordinatorEventHandling {
+//    func handle(event _: SpecificCoordinatorEvent) {
+//        // TODO: Handle event
+//    }
+// }
+//
+//// MARK: - Factories
+// private extension InitialSceneCoordinator {
+//    func makeSpecificView() -> SpecificCoordinator {
+//        let coordinator = SpecificCoordinator(assembler: assembler, parent: self)
+//
+//        return coordinator
+//    }
+// }
