@@ -9,5 +9,5 @@
 // MARK: - Library table view cell types
 
 enum JokeListSection {
-    case jokeListSection
+    case item(Joke)
 }

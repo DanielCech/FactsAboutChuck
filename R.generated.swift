@@ -239,8 +239,8 @@ struct R: Rswift.Validatable {
     }
     #endif
 
-    static func jokeCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> JokeCell? {
-      return R.nib.jokeCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? JokeCell
+    static func jokeCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> FactsAboutChuck.JokeCell? {
+      return R.nib.jokeCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? FactsAboutChuck.JokeCell
     }
 
     fileprivate init() {}
@@ -249,7 +249,7 @@ struct R: Rswift.Validatable {
   /// This `R.reuseIdentifier` struct is generated, and contains static references to 1 reuse identifiers.
   struct reuseIdentifier {
     /// Reuse identifier `JokeCell`.
-    static let jokeCell: Rswift.ReuseIdentifier<JokeCell> = Rswift.ReuseIdentifier(identifier: "JokeCell")
+    static let jokeCell: Rswift.ReuseIdentifier<FactsAboutChuck.JokeCell> = Rswift.ReuseIdentifier(identifier: "JokeCell")
 
     fileprivate init() {}
   }
@@ -310,14 +310,14 @@ struct _R: Rswift.Validatable {
     }
 
     struct _JokeCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType, Rswift.Validatable {
-      typealias ReusableType = JokeCell
+      typealias ReusableType = FactsAboutChuck.JokeCell
 
       let bundle = R.hostingBundle
       let identifier = "JokeCell"
       let name = "JokeCell"
 
-      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> JokeCell? {
-        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? JokeCell
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> FactsAboutChuck.JokeCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? FactsAboutChuck.JokeCell
       }
 
       static func validate() throws {
@@ -352,7 +352,10 @@ struct _R: Rswift.Validatable {
       let name = "JokeListViewController"
 
       static func validate() throws {
+        if UIKit.UIImage(named: "dashboardTabBarIconGrayed", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'dashboardTabBarIconGrayed' is used in storyboard 'JokeListViewController', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "dashboardTabBarIconSelected", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'dashboardTabBarIconSelected' is used in storyboard 'JokeListViewController', but couldn't be loaded.") }
         if #available(iOS 11.0, tvOS 11.0, *) {
+          if UIKit.UIColor(named: "App Colors/dashboardBackground", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'App Colors/dashboardBackground' is used in storyboard 'JokeListViewController', but couldn't be loaded.") }
         }
       }
 

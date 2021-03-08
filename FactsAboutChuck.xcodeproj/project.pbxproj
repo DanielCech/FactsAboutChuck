@@ -62,12 +62,13 @@
 		27FAC4652479D452002F2A33 /* StoryboardInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FAC42F2479D452002F2A33 /* StoryboardInit.swift */; };
 		2F240E6E21B185FA00E93D36 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F240E6D21B185FA00E93D36 /* R.generated.swift */; };
 		37195B0B25F61093006C3CAC /* JokeListCoordinatorDeallocTester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37195B0A25F61092006C3CAC /* JokeListCoordinatorDeallocTester.swift */; };
-		37300AA225F594B200F4626E /* JokeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37300AA025F594B200F4626E /* JokeCell.swift */; };
-		37300AA325F594B200F4626E /* JokeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37300AA125F594B200F4626E /* JokeCell.xib */; };
 		37300AA925F596BD00F4626E /* ReuseIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37300AA825F596BD00F4626E /* ReuseIdentifiable.swift */; };
 		37300AB025F5A09000F4626E /* JokesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37300AAF25F5A09000F4626E /* JokesProvider.swift */; };
 		37300AB625F5A41700F4626E /* jokes.json in Resources */ = {isa = PBXBuildFile; fileRef = 37300AB525F5A41700F4626E /* jokes.json */; };
 		37300ABA25F5A43800F4626E /* Joke.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37300AB925F5A43700F4626E /* Joke.swift */; };
+		3776356125F6E0540075947F /* JokeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3776355F25F6E0540075947F /* JokeCell.swift */; };
+		3776356225F6E0540075947F /* JokeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3776356025F6E0540075947F /* JokeCell.xib */; };
+		3776356925F6E1410075947F /* JokeListSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3776356725F6E1410075947F /* JokeListSection.swift */; };
 		37F6520E25F44FD7004E82F3 /* JokeListViewEventHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F6520525F44FD7004E82F3 /* JokeListViewEventHandling.swift */; };
 		37F6520F25F44FD7004E82F3 /* JokeListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F6520725F44FD7004E82F3 /* JokeListCoordinator.swift */; };
 		37F6521025F44FD7004E82F3 /* JokeListCoordinatorEventHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F6520825F44FD7004E82F3 /* JokeListCoordinatorEventHandling.swift */; };
@@ -154,12 +155,13 @@
 		35D1E7D46B9023C97B2DE449 /* Pods-defaults-FactsAboutChuck Tests.development - release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-defaults-FactsAboutChuck Tests.development - release.xcconfig"; path = "Target Support Files/Pods-defaults-FactsAboutChuck Tests/Pods-defaults-FactsAboutChuck Tests.development - release.xcconfig"; sourceTree = "<group>"; };
 		36FA82697029EBA655B6C768 /* Pods-defaults-FactsAboutChuck.development - release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-defaults-FactsAboutChuck.development - release.xcconfig"; path = "Target Support Files/Pods-defaults-FactsAboutChuck/Pods-defaults-FactsAboutChuck.development - release.xcconfig"; sourceTree = "<group>"; };
 		37195B0A25F61092006C3CAC /* JokeListCoordinatorDeallocTester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JokeListCoordinatorDeallocTester.swift; sourceTree = "<group>"; };
-		37300AA025F594B200F4626E /* JokeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeCell.swift; sourceTree = "<group>"; };
-		37300AA125F594B200F4626E /* JokeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JokeCell.xib; sourceTree = "<group>"; };
 		37300AA825F596BD00F4626E /* ReuseIdentifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseIdentifiable.swift; sourceTree = "<group>"; };
 		37300AAF25F5A09000F4626E /* JokesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokesProvider.swift; sourceTree = "<group>"; };
 		37300AB525F5A41700F4626E /* jokes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = jokes.json; sourceTree = "<group>"; };
 		37300AB925F5A43700F4626E /* Joke.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Joke.swift; sourceTree = "<group>"; };
+		3776355F25F6E0540075947F /* JokeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JokeCell.swift; sourceTree = "<group>"; };
+		3776356025F6E0540075947F /* JokeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JokeCell.xib; sourceTree = "<group>"; };
+		3776356725F6E1410075947F /* JokeListSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JokeListSection.swift; sourceTree = "<group>"; };
 		37F6520525F44FD7004E82F3 /* JokeListViewEventHandling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JokeListViewEventHandling.swift; sourceTree = "<group>"; };
 		37F6520725F44FD7004E82F3 /* JokeListCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JokeListCoordinator.swift; sourceTree = "<group>"; };
 		37F6520825F44FD7004E82F3 /* JokeListCoordinatorEventHandling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JokeListCoordinatorEventHandling.swift; sourceTree = "<group>"; };
@@ -556,30 +558,14 @@
 		37195B1225F610B2006C3CAC /* JokeList */ = {
 			isa = PBXGroup;
 			children = (
-				37300A9E25F5946B00F4626E /* View */,
+				3776356525F6E1410075947F /* Models */,
+				3776355D25F6E0540075947F /* View */,
 				37F6520D25F44FD7004E82F3 /* JokeListViewController.storyboard */,
 				37F6520925F44FD7004E82F3 /* JokeListViewController.swift */,
 				37F6520525F44FD7004E82F3 /* JokeListViewEventHandling.swift */,
 				37F6520C25F44FD7004E82F3 /* JokeListViewModel.swift */,
 			);
 			path = JokeList;
-			sourceTree = "<group>";
-		};
-		37300A9E25F5946B00F4626E /* View */ = {
-			isa = PBXGroup;
-			children = (
-				37300A9F25F5947100F4626E /* Cell */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		37300A9F25F5947100F4626E /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				37300AA025F594B200F4626E /* JokeCell.swift */,
-				37300AA125F594B200F4626E /* JokeCell.xib */,
-			);
-			path = Cell;
 			sourceTree = "<group>";
 		};
 		37300AAE25F5A07700F4626E /* Jokes */ = {
@@ -590,6 +576,31 @@
 				37300AB925F5A43700F4626E /* Joke.swift */,
 			);
 			path = Jokes;
+			sourceTree = "<group>";
+		};
+		3776355D25F6E0540075947F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3776355E25F6E0540075947F /* Cell */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3776355E25F6E0540075947F /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				3776355F25F6E0540075947F /* JokeCell.swift */,
+				3776356025F6E0540075947F /* JokeCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		3776356525F6E1410075947F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3776356725F6E1410075947F /* JokeListSection.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		37F6520425F44FD7004E82F3 /* JokeList */ = {
@@ -719,7 +730,7 @@
 			files = (
 				37300AB625F5A41700F4626E /* jokes.json in Resources */,
 				37F6521425F44FD7004E82F3 /* JokeListViewController.storyboard in Resources */,
-				37300AA325F594B200F4626E /* JokeCell.xib in Resources */,
+				3776356225F6E0540075947F /* JokeCell.xib in Resources */,
 				27FAC44B2479D452002F2A33 /* Localizable.strings in Resources */,
 				27FAC4352479D452002F2A33 /* LaunchScreen.storyboard in Resources */,
 				27FAC44A2479D452002F2A33 /* Assets.xcassets in Resources */,
@@ -860,7 +871,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				27FAC4362479D452002F2A33 /* AppDelegate.swift in Sources */,
-				37300AA225F594B200F4626E /* JokeCell.swift in Sources */,
 				272D8251251CDCAC002A380E /* UISceneDelegate+AppCoordinator.swift in Sources */,
 				27FAC45D2479D452002F2A33 /* ServiceAssembly.swift in Sources */,
 				C10117B724DD751800EBAE2B /* ParentCoordinatorContaining.swift in Sources */,
@@ -903,7 +913,9 @@
 				27FAC45E2479D452002F2A33 /* ViewModelAssembly.swift in Sources */,
 				27E33AA1247B1F330064A437 /* APIManager.swift in Sources */,
 				272D824E251CDCAC002A380E /* UIViewController+Alerts.swift in Sources */,
+				3776356925F6E1410075947F /* JokeListSection.swift in Sources */,
 				272D824B251CDCAC002A380E /* String+Localized.swift in Sources */,
+				3776356125F6E0540075947F /* JokeCell.swift in Sources */,
 				37F6520E25F44FD7004E82F3 /* JokeListViewEventHandling.swift in Sources */,
 				37F6521125F44FD7004E82F3 /* JokeListViewController.swift in Sources */,
 				27FAC4632479D452002F2A33 /* LoadingAndRefreshConfiguring.swift in Sources */,
