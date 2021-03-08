@@ -1,0 +1,9 @@
+{
+  "description": "ViewModel with support of RxDataSources driven table view",
+  "status": "draft",
+  "derivedFrom": null,
+  "parameters": [
+  ],
+  "validationContext": {},
+  "dependencies": ["Protocol/ViewModelType"]
+}

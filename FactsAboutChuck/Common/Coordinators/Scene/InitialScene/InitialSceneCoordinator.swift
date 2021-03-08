@@ -24,7 +24,7 @@ final class InitialSceneCoordinator {
 // MARK: - SceneCoordinating
 extension InitialSceneCoordinator: InitialSceneCoordinating {
     func start() {
-        let coordinator = makeSpecificView()
+        let coordinator = makeJokeListCoordinator()
         childCoordinators.append(coordinator)
         coordinator.start()
 
@@ -33,18 +33,15 @@ extension InitialSceneCoordinator: InitialSceneCoordinating {
     }
 }
 
-//// MARK: - SpecificCoordinatorEventHandling
-// extension InitialSceneCoordinator: SpecificCoordinatorEventHandling {
-//    func handle(event _: SpecificCoordinatorEvent) {
-//        // TODO: Handle event
-//    }
-// }
-//
 //// MARK: - Factories
-// private extension InitialSceneCoordinator {
-//    func makeSpecificView() -> SpecificCoordinator {
-//        let coordinator = SpecificCoordinator(assembler: assembler, parent: self)
-//
-//        return coordinator
-//    }
-// }
+private extension InitialSceneCoordinator {
+    func makeJokeListCoordinator() -> JokeListCoordinator {
+        let coordinator = JokeListCoordinator(assembler: assembler, parent: self)
+
+        return coordinator
+    }
+}
+
+extension InitialSceneCoordinator: JokeListCoordinatorEventHandling {
+    func handle(event _: JokeListCoordinatorEvent) {}
+}

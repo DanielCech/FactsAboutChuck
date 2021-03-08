@@ -89,10 +89,19 @@ struct R: Rswift.Validatable {
   }
 
   #if os(iOS) || os(tvOS)
-  /// This `R.storyboard` struct is generated, and contains static references to 1 storyboards.
+  /// This `R.storyboard` struct is generated, and contains static references to 2 storyboards.
   struct storyboard {
+    /// Storyboard `JokeListViewController`.
+    static let jokeListViewController = _R.storyboard.jokeListViewController()
     /// Storyboard `LaunchScreen`.
     static let launchScreen = _R.storyboard.launchScreen()
+
+    #if os(iOS) || os(tvOS)
+    /// `UIStoryboard(name: "JokeListViewController", bundle: ...)`
+    static func jokeListViewController(_: Void = ()) -> UIKit.UIStoryboard {
+      return UIKit.UIStoryboard(resource: R.storyboard.jokeListViewController)
+    }
+    #endif
 
     #if os(iOS) || os(tvOS)
     /// `UIStoryboard(name: "LaunchScreen", bundle: ...)`
@@ -149,6 +158,20 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
+  /// This `R.file` struct is generated, and contains static references to 1 files.
+  struct file {
+    /// Resource file `jokes.json`.
+    static let jokesJson = Rswift.FileResource(bundle: R.hostingBundle, name: "jokes", pathExtension: "json")
+
+    /// `bundle.url(forResource: "jokes", withExtension: "json")`
+    static func jokesJson(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.jokesJson
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+
+    fileprivate init() {}
+  }
+
   /// This `R.info` struct is generated, and contains static references to 1 properties.
   struct info {
     struct uiApplicationSceneManifest {
@@ -174,6 +197,26 @@ struct R: Rswift.Validatable {
       }
 
       fileprivate init() {}
+    }
+
+    fileprivate init() {}
+  }
+
+  /// This `R.nib` struct is generated, and contains static references to 1 nibs.
+  struct nib {
+    /// Nib `JokeCell`.
+    static let jokeCell = _R.nib._JokeCell()
+
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "JokeCell", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.jokeCell) instead")
+    static func jokeCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.jokeCell)
+    }
+    #endif
+
+    static func jokeCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> JokeCell? {
+      return R.nib.jokeCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? JokeCell
     }
 
     fileprivate init() {}
@@ -226,12 +269,48 @@ struct _R: Rswift.Validatable {
   }
 
   #if os(iOS) || os(tvOS)
+  struct nib {
+    struct _JokeCell: Rswift.NibResourceType {
+      let bundle = R.hostingBundle
+      let name = "JokeCell"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> JokeCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? JokeCell
+      }
+
+      fileprivate init() {}
+    }
+
+    fileprivate init() {}
+  }
+  #endif
+
+  #if os(iOS) || os(tvOS)
   struct storyboard: Rswift.Validatable {
     static func validate() throws {
+      #if os(iOS) || os(tvOS)
+      try jokeListViewController.validate()
+      #endif
       #if os(iOS) || os(tvOS)
       try launchScreen.validate()
       #endif
     }
+
+    #if os(iOS) || os(tvOS)
+    struct jokeListViewController: Rswift.StoryboardResourceWithInitialControllerType, Rswift.Validatable {
+      typealias InitialController = JokeListViewController
+
+      let bundle = R.hostingBundle
+      let name = "JokeListViewController"
+
+      static func validate() throws {
+        if #available(iOS 11.0, tvOS 11.0, *) {
+        }
+      }
+
+      fileprivate init() {}
+    }
+    #endif
 
     #if os(iOS) || os(tvOS)
     struct launchScreen: Rswift.StoryboardResourceWithInitialControllerType, Rswift.Validatable {

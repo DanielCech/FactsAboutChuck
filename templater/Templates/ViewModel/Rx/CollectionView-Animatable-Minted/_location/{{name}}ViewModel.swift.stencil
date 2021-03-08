@@ -1,0 +1,165 @@
+//
+//  {{fileName}}
+//  {{projectName}}
+//
+//  Created by {{author}} on {{date}}.
+//  {{copyright}}
+//
+
+import RxCocoa
+import RxSwift
+import RxSwiftExt
+
+final class {{name}}ViewModel: {{viewModelSuperclass}}, ViewModelType {
+    struct Input {
+        let viewWillAppear: Observable<Void>
+        let {{primaryAction}}Action: Observable<Void>
+    }
+
+    struct Output {
+        let {{primaryAction}}Done: Driver<Void>
+        let errors: Driver<MintedError>
+        let activity: Driver<(Bool, String?)> 
+        let items: Driver<[{{name}}Section]>
+        let layout: Driver<[{{name}}LayoutSection]>
+    }
+
+    let apiService: {{apiService|capitalized}}Servicing
+    let userService: UserServicing
+
+    init(apiService: {{apiService|capitalized}}Servicing, userService: UserServicing) {
+        self.apiService = apiService
+        self.userService = userService
+    }
+
+    func transform(input: Input) -> Output {
+        {% for inputField in inputFields %}let {{inputField}}Text = BehaviorRelay<String>(value: "")
+        {% endfor %}
+
+        {% for inputField in inputFields %}let {{inputField}}Config = create{{inputField|capitalized}}Configuration(text: {{inputField}}Text, triggerValidation: input.{{primaryAction}}Action)
+        {% endfor %}
+
+        let configurations: [TextFieldCellConfiguration] = [
+            {% for inputField in inputFields %}{{inputField}}Config{%if not forloop.last%},{%endif%}
+            {% endfor %}
+        ]
+
+        let {{name|decapitalized}}Items: [{{name}}Item] = configurations.map { .textField($0) }
+
+        let items = Observable
+            .merge(
+                {% for inputField in inputFields %}{{inputField}}Config.validationStatus.asObservable(){%if not forloop.last%},{%endif%}
+                {% endfor %}
+            )
+            .debug("ui update")
+            .mapTo({{name|decapitalized}}Items)
+            .map { _ in
+                [
+                    {{name}}Section(
+                        header: "",
+                        items: {{name|decapitalized}}Items,
+                        sectionLayout: .textfield
+                    ),
+                    {{name}}Section(
+                        header: "",
+                        items: [
+                            .mainButton(
+                                ButtonCellConfiguration(buttonTitle: Localizables.{{name|decapitalized}}.uppercased())
+                            )
+                        ],
+                        sectionLayout: .mainButton
+                    ),
+                    {{name}}Section(
+                        header: "",
+                        items: [
+                            .secondaryButton(
+                                ButtonCellConfiguration(
+                                    buttonTitle: Localizables.{{name}}ResetPassword(),
+                                    topMargin: 12,
+                                    bottomMargin: 57
+                                )
+                            )
+                        ],
+                        sectionLayout: .secondaryButton
+                    ),
+                    {{name}}Section(
+                        header: "",
+                        items: [.footer],
+                        sectionLayout: .footer
+                    )
+                ]
+            }
+
+        let inputValidation = Observable.combineLatest(
+            [
+                {% for inputField in inputFields %}
+                {{inputField}}Config.validationStatus.asObservable(){%if not forloop.last%},{%endif%}
+                {% endfor %}
+            ])
+            .debug("inputValidation")
+            .skip(1)
+            .filter({ validationStatuses in
+                    validationStatuses.allSatisfy { $0 == .validated }
+            })
+
+        let {{apiEndpoint}}Request = inputValidation
+            .debug("l{{apiEndpoint}}Debug")
+            .show(activity)
+            .withUnretained(self)
+            .flatMap { viewModel, _ in
+                viewModel.apiService.{{apiEndpoint}}(
+                    {% for inputField in inputFields %}
+                    {{inputField}}: {{inputField}}Text.value{%if not forloop.last%},{%endif%}
+                    {% endfor %}
+                )
+                .asObservable()
+                .materialize()
+            }
+            .hide(activity)
+            .share()
+
+        let {{apiEndpoint|decapitalized}}Done = {{apiEndpoint}}
+            .elements()
+            .asDriverOnErrorJustComplete()
+
+        let errors = Observable.merge(
+            {{apiEndpoint}}.errors()
+        )
+        .compactMap { $0 as? MintedError }
+        .asDriverOnErrorJustComplete()
+
+        let layout = items
+            .debug("layout change")
+            .map { sections in
+                sections.map(\.layoutSection)
+            }
+
+        return Output(
+            {{apiEndpoint|decapitalized}}Done: {{apiEndpoint|decapitalized}}Done,
+            errors: errors,
+            activity: activity.asDriverOnErrorJustComplete(),
+            items: items.asDriverOnErrorJustComplete(),
+            layout: layout.asDriverOnErrorJustComplete()
+        )
+    }
+}
+
+// MARK: - Configurations
+
+extension {{name}}ViewModel {
+    {% for inputField in inputFields %}
+    func create{{inputField|capitalized}}Configuration(text: BehaviorRelay<String>, triggerValidation: Observable<Void>) -> TextFieldCellConfiguration {
+        .init(
+            title: "",
+            placeholder: "{{inputField}}",
+            keyboardType: .default,
+            autocapitalization: .none,
+            validation: .email,
+            text: text,
+            validationStatus: BehaviorRelay<TextFieldValidationStatus>(value: .normal),
+            immediateValidation: false,
+            triggerValidation: triggerValidation
+        )
+    }
+    {% endfor %}
+}

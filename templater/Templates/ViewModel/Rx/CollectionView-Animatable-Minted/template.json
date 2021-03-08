@@ -1,0 +1,21 @@
+{
+  "description": "ViewModel with support for animatable RxDataSource driven collection view",
+  "status": "draft",
+  "derivedFrom": null,
+  "parameters": [
+    {
+      "name": "apiService",
+      "type": "string",
+      "defaultValue": "Api",
+      "description": "API Service class providing the API for this ViewModel without -Service suffix"
+    },
+    {
+      "name": "viewModelSuperclass",
+      "type": "string",
+      "defaultValue": "",
+      "description": "Base class for view model without -ViewModel suffix"
+    }
+  ],
+  "validationContext": {},
+  "dependencies": ["Protocol/ViewModelType"]
+}

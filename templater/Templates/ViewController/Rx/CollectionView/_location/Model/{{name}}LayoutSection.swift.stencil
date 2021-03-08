@@ -1,0 +1,34 @@
+//
+//  {{fileName}}
+//  {{projectName}}
+//
+//  Created by {{author}} on {{date}}.
+//  {{copyright}}
+//
+import Foundation
+import RxDataSources
+import RxSwift
+
+// Required for Compositional Layout
+// Enum which will define the Layout Sections
+enum {{name|capitalized}}LayoutSection: Int, CaseIterable {
+    case email
+    case password
+}
+
+struct {{name|capitalized}}Section: SectionModelType {
+    typealias Item = {{name|capitalized}}Item
+
+    var header: String
+    var items: [Item]
+
+    init(original: {{name|capitalized}}Section, items: [Item]) {
+        self = original
+        self.items = items
+    }
+}
+
+enum {{name|capitalized}}Item {
+    case email(placeholder: String)
+    case password(placeholder: String)
+}

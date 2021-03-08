@@ -62,6 +62,19 @@
 		27FAC4632479D452002F2A33 /* LoadingAndRefreshConfiguring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FAC42D2479D452002F2A33 /* LoadingAndRefreshConfiguring.swift */; };
 		27FAC4652479D452002F2A33 /* StoryboardInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FAC42F2479D452002F2A33 /* StoryboardInit.swift */; };
 		2F240E6E21B185FA00E93D36 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F240E6D21B185FA00E93D36 /* R.generated.swift */; };
+		37300AA225F594B200F4626E /* JokeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37300AA025F594B200F4626E /* JokeCell.swift */; };
+		37300AA325F594B200F4626E /* JokeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37300AA125F594B200F4626E /* JokeCell.xib */; };
+		37300AA925F596BD00F4626E /* ReuseIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37300AA825F596BD00F4626E /* ReuseIdentifiable.swift */; };
+		37300AB025F5A09000F4626E /* JokesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37300AAF25F5A09000F4626E /* JokesProvider.swift */; };
+		37300AB625F5A41700F4626E /* jokes.json in Resources */ = {isa = PBXBuildFile; fileRef = 37300AB525F5A41700F4626E /* jokes.json */; };
+		37300ABA25F5A43800F4626E /* Joke.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37300AB925F5A43700F4626E /* Joke.swift */; };
+		37F6520E25F44FD7004E82F3 /* JokeListViewEventHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F6520525F44FD7004E82F3 /* JokeListViewEventHandling.swift */; };
+		37F6520F25F44FD7004E82F3 /* JokeListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F6520725F44FD7004E82F3 /* JokeListCoordinator.swift */; };
+		37F6521025F44FD7004E82F3 /* JokeListCoordinatorEventHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F6520825F44FD7004E82F3 /* JokeListCoordinatorEventHandling.swift */; };
+		37F6521125F44FD7004E82F3 /* JokeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F6520925F44FD7004E82F3 /* JokeListViewController.swift */; };
+		37F6521225F44FD7004E82F3 /* JokeListSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F6520B25F44FD7004E82F3 /* JokeListSection.swift */; };
+		37F6521325F44FD7004E82F3 /* JokeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F6520C25F44FD7004E82F3 /* JokeListViewModel.swift */; };
+		37F6521425F44FD7004E82F3 /* JokeListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37F6520D25F44FD7004E82F3 /* JokeListViewController.storyboard */; };
 		756043300B384236749A0F8A /* Pods_defaults_FactsAboutChuck.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33454648722DD949C227FA4E /* Pods_defaults_FactsAboutChuck.framework */; };
 		9DA5A5E93F3C92D78C95F7E9 /* Pods_defaults_FactsAboutChuck_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63F7BCFE887AA7F035E434D7 /* Pods_defaults_FactsAboutChuck_Tests.framework */; };
 		C10117B624DD751800EBAE2B /* ViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10117B424DD751800EBAE2B /* ViewControllerCoordinator.swift */; };
@@ -142,6 +155,19 @@
 		33454648722DD949C227FA4E /* Pods_defaults_FactsAboutChuck.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_defaults_FactsAboutChuck.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		35D1E7D46B9023C97B2DE449 /* Pods-defaults-FactsAboutChuck Tests.development - release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-defaults-FactsAboutChuck Tests.development - release.xcconfig"; path = "Target Support Files/Pods-defaults-FactsAboutChuck Tests/Pods-defaults-FactsAboutChuck Tests.development - release.xcconfig"; sourceTree = "<group>"; };
 		36FA82697029EBA655B6C768 /* Pods-defaults-FactsAboutChuck.development - release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-defaults-FactsAboutChuck.development - release.xcconfig"; path = "Target Support Files/Pods-defaults-FactsAboutChuck/Pods-defaults-FactsAboutChuck.development - release.xcconfig"; sourceTree = "<group>"; };
+		37300AA025F594B200F4626E /* JokeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeCell.swift; sourceTree = "<group>"; };
+		37300AA125F594B200F4626E /* JokeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JokeCell.xib; sourceTree = "<group>"; };
+		37300AA825F596BD00F4626E /* ReuseIdentifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseIdentifiable.swift; sourceTree = "<group>"; };
+		37300AAF25F5A09000F4626E /* JokesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokesProvider.swift; sourceTree = "<group>"; };
+		37300AB525F5A41700F4626E /* jokes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = jokes.json; sourceTree = "<group>"; };
+		37300AB925F5A43700F4626E /* Joke.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Joke.swift; sourceTree = "<group>"; };
+		37F6520525F44FD7004E82F3 /* JokeListViewEventHandling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JokeListViewEventHandling.swift; sourceTree = "<group>"; };
+		37F6520725F44FD7004E82F3 /* JokeListCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JokeListCoordinator.swift; sourceTree = "<group>"; };
+		37F6520825F44FD7004E82F3 /* JokeListCoordinatorEventHandling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JokeListCoordinatorEventHandling.swift; sourceTree = "<group>"; };
+		37F6520925F44FD7004E82F3 /* JokeListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JokeListViewController.swift; sourceTree = "<group>"; };
+		37F6520B25F44FD7004E82F3 /* JokeListSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JokeListSection.swift; sourceTree = "<group>"; };
+		37F6520C25F44FD7004E82F3 /* JokeListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JokeListViewModel.swift; sourceTree = "<group>"; };
+		37F6520D25F44FD7004E82F3 /* JokeListViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = JokeListViewController.storyboard; sourceTree = "<group>"; };
 		3DC59E53B7091DDBF9226F89 /* Pods-defaults-FactsAboutChuck.staging - release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-defaults-FactsAboutChuck.staging - release.xcconfig"; path = "Target Support Files/Pods-defaults-FactsAboutChuck/Pods-defaults-FactsAboutChuck.staging - release.xcconfig"; sourceTree = "<group>"; };
 		4FBEF2021031C41E5B9CFA7A /* Pods-defaults-FactsAboutChuck Tests.staging - debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-defaults-FactsAboutChuck Tests.staging - debug.xcconfig"; path = "Target Support Files/Pods-defaults-FactsAboutChuck Tests/Pods-defaults-FactsAboutChuck Tests.staging - debug.xcconfig"; sourceTree = "<group>"; };
 		568B9F3260D45EA780166FE9 /* Pods-defaults-FactsAboutChuck.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-defaults-FactsAboutChuck.debug.xcconfig"; path = "Target Support Files/Pods-defaults-FactsAboutChuck/Pods-defaults-FactsAboutChuck.debug.xcconfig"; sourceTree = "<group>"; };
@@ -314,6 +340,7 @@
 		27FAC3E62479D452002F2A33 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				37F6520425F44FD7004E82F3 /* JokeList */,
 				27742DDC247D6582003DDAC8 /* LaunchScreen */,
 			);
 			path = Scenes;
@@ -428,6 +455,7 @@
 		27FAC40F2479D452002F2A33 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				37300AAE25F5A07700F4626E /* Jokes */,
 				27FAC4132479D452002F2A33 /* Logging */,
 			);
 			path = Managers;
@@ -478,6 +506,7 @@
 				27FAC42B2479D452002F2A33 /* NibLoadableView.swift */,
 				27FAC42C2479D452002F2A33 /* NibNameIdentifiable.swift */,
 				27FAC42F2479D452002F2A33 /* StoryboardInit.swift */,
+				37300AA825F596BD00F4626E /* ReuseIdentifiable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -524,6 +553,64 @@
 				272DAC632481760A001E7C3A /* TestSceneDelegate.swift */,
 			);
 			path = "FactsAboutChuck Tests";
+			sourceTree = "<group>";
+		};
+		37300A9E25F5946B00F4626E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				37300A9F25F5947100F4626E /* Cell */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		37300A9F25F5947100F4626E /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				37300AA025F594B200F4626E /* JokeCell.swift */,
+				37300AA125F594B200F4626E /* JokeCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		37300AAE25F5A07700F4626E /* Jokes */ = {
+			isa = PBXGroup;
+			children = (
+				37300AB525F5A41700F4626E /* jokes.json */,
+				37300AAF25F5A09000F4626E /* JokesProvider.swift */,
+				37300AB925F5A43700F4626E /* Joke.swift */,
+			);
+			path = Jokes;
+			sourceTree = "<group>";
+		};
+		37F6520425F44FD7004E82F3 /* JokeList */ = {
+			isa = PBXGroup;
+			children = (
+				37300A9E25F5946B00F4626E /* View */,
+				37F6520625F44FD7004E82F3 /* Coordinator */,
+				37F6520A25F44FD7004E82F3 /* Models */,
+				37F6520D25F44FD7004E82F3 /* JokeListViewController.storyboard */,
+				37F6520925F44FD7004E82F3 /* JokeListViewController.swift */,
+				37F6520525F44FD7004E82F3 /* JokeListViewEventHandling.swift */,
+				37F6520C25F44FD7004E82F3 /* JokeListViewModel.swift */,
+			);
+			path = JokeList;
+			sourceTree = "<group>";
+		};
+		37F6520625F44FD7004E82F3 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				37F6520725F44FD7004E82F3 /* JokeListCoordinator.swift */,
+				37F6520825F44FD7004E82F3 /* JokeListCoordinatorEventHandling.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		37F6520A25F44FD7004E82F3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				37F6520B25F44FD7004E82F3 /* JokeListSection.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		80DDAB1A1607C933FE948655 /* Frameworks */ = {
@@ -633,6 +720,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37300AB625F5A41700F4626E /* jokes.json in Resources */,
+				37F6521425F44FD7004E82F3 /* JokeListViewController.storyboard in Resources */,
+				37300AA325F594B200F4626E /* JokeCell.xib in Resources */,
 				27FAC44B2479D452002F2A33 /* Localizable.strings in Resources */,
 				27FAC4352479D452002F2A33 /* LaunchScreen.storyboard in Resources */,
 				27FAC44A2479D452002F2A33 /* Assets.xcassets in Resources */,
@@ -773,6 +863,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				27FAC4362479D452002F2A33 /* AppDelegate.swift in Sources */,
+				37300AA225F594B200F4626E /* JokeCell.swift in Sources */,
 				272D8251251CDCAC002A380E /* UISceneDelegate+AppCoordinator.swift in Sources */,
 				27FAC45D2479D452002F2A33 /* ServiceAssembly.swift in Sources */,
 				C10117B724DD751800EBAE2B /* ParentCoordinatorContaining.swift in Sources */,
@@ -783,13 +874,17 @@
 				272D8248251CDCAC002A380E /* Observable+Convenience.swift in Sources */,
 				27FAC4432479D452002F2A33 /* InitialSceneCoordinating.swift in Sources */,
 				27FAC4452479D452002F2A33 /* TabBarControllerCoordinator.swift in Sources */,
+				37F6521325F44FD7004E82F3 /* JokeListViewModel.swift in Sources */,
+				37F6521025F44FD7004E82F3 /* JokeListCoordinatorEventHandling.swift in Sources */,
 				27FAC43E2479D452002F2A33 /* AppCoordinator.swift in Sources */,
 				272D8247251CDCAC002A380E /* Rswift+ViewModeled.swift in Sources */,
+				37F6520F25F44FD7004E82F3 /* JokeListCoordinator.swift in Sources */,
 				272D824A251CDCAC002A380E /* Thread+Main.swift in Sources */,
 				27FAC4472479D452002F2A33 /* SpecificRouter.swift in Sources */,
 				27FAC4372479D452002F2A33 /* main.swift in Sources */,
 				27E33AA2247B1F330064A437 /* APIManaging.swift in Sources */,
 				274E4D1A247BCD5900755251 /* ViewModelType.swift in Sources */,
+				37300AA925F596BD00F4626E /* ReuseIdentifiable.swift in Sources */,
 				272D824C251CDCAC002A380E /* Collection+Convenience.swift in Sources */,
 				27FAC43A2479D452002F2A33 /* SceneManifest.swift in Sources */,
 				27FAC4622479D452002F2A33 /* NibNameIdentifiable.swift in Sources */,
@@ -807,18 +902,23 @@
 				27FAC44F2479D452002F2A33 /* SpecificModel.swift in Sources */,
 				27FAC43F2479D452002F2A33 /* AppCoordinating.swift in Sources */,
 				27FAC45F2479D452002F2A33 /* ManagerAssembly.swift in Sources */,
+				37F6521225F44FD7004E82F3 /* JokeListSection.swift in Sources */,
 				27FAC4392479D452002F2A33 /* SceneDelegate.swift in Sources */,
 				27FAC45E2479D452002F2A33 /* ViewModelAssembly.swift in Sources */,
 				27E33AA1247B1F330064A437 /* APIManager.swift in Sources */,
 				272D824E251CDCAC002A380E /* UIViewController+Alerts.swift in Sources */,
 				272D824B251CDCAC002A380E /* String+Localized.swift in Sources */,
+				37F6520E25F44FD7004E82F3 /* JokeListViewEventHandling.swift in Sources */,
+				37F6521125F44FD7004E82F3 /* JokeListViewController.swift in Sources */,
 				27FAC4632479D452002F2A33 /* LoadingAndRefreshConfiguring.swift in Sources */,
 				27FAC4402479D452002F2A33 /* AppCoordinatorDelegating.swift in Sources */,
+				37300ABA25F5A43800F4626E /* Joke.swift in Sources */,
 				27FAC4612479D452002F2A33 /* NibLoadableView.swift in Sources */,
 				C10117B624DD751800EBAE2B /* ViewControllerCoordinator.swift in Sources */,
 				272D824F251CDCAC002A380E /* UITableView+RegistrationHelpers.swift in Sources */,
 				27FAC4462479D452002F2A33 /* Coordinator.swift in Sources */,
 				27FAC4482479D452002F2A33 /* SpecificService.swift in Sources */,
+				37300AB025F5A09000F4626E /* JokesProvider.swift in Sources */,
 				272D8249251CDCAC002A380E /* Date+Convenience.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

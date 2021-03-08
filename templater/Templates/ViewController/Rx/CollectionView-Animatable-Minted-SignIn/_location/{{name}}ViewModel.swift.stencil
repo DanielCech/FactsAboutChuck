@@ -1,0 +1,189 @@
+//
+//  {{fileName}}
+//  {{projectName}}
+//
+//  Created by {{author}} on {{date}}.
+//  {{copyright}}
+//
+
+import RxCocoa
+import RxSwift
+import RxSwiftExt
+
+final class {{name|capitalized}}ViewModel: {{viewModelSuperclass|capitalized}}, ViewModelType {
+    struct Input {
+        let viewWillAppear: Observable<Void>
+        let loginAction: Observable<Void>
+    }
+
+    struct Output {
+        let userDidLogin: Driver<Void>
+        let errors: Driver<MintedError>
+        let activity: Driver<(Bool, String?)> // Show loading HUD with some optional text
+        let items: Driver<[{{name|capitalized}}Section]>
+        let layout: Driver<[{{name|capitalized}}LayoutSection]>
+    }
+
+    let apiService: {{apiService|capitalized}}Servicing
+    let userService: UserServicing
+
+    init(apiService: {{apiService|capitalized}}Servicing, userService: UserServicing) {
+        self.apiService = apiService
+        self.userService = userService
+    }
+
+    func transform(input: Input) -> Output {
+        let emailText = BehaviorRelay<String>(value: "")
+        let passwordText = BehaviorRelay<String>(value: "")
+
+        let emailConfig = createEmailConfiguration(text: emailText, triggerValidation: input.loginAction)
+        let passwordConfig = createPasswordConfiguration(text: passwordText, triggerValidation: input.loginAction)
+
+        let configurations: [TextFieldCellConfiguration] = [emailConfig, passwordConfig]
+
+        let {{name|decapitalized}}Items: [{{name|capitalized}}Item] = configurations.map { .textField($0) }
+
+        let items = Observable
+            .merge(
+                emailConfig.validationStatus.asObservable(),
+                passwordConfig.validationStatus.asObservable()
+            )
+            .debug("ui update")
+            .mapTo({{name|decapitalized}}Items)
+            .map { _ in
+                [
+                    {{name|capitalized}}Section(
+                        header: "",
+                        items: {{name|decapitalized}}Items,
+                        sectionLayout: .textfield
+                    ),
+                    {{name|capitalized}}Section(
+                        header: "",
+                        items: [
+                            .mainButton(
+                                ButtonCellConfiguration(buttonTitle: Localizables.{{name|decapitalized}}LogIn().uppercased())
+                            )
+                        ],
+                        sectionLayout: .mainButton
+                    ),
+                    {{name|capitalized}}Section(
+                        header: "",
+                        items: [
+                            .secondaryButton(
+                                ButtonCellConfiguration(
+                                    buttonTitle: Localizables.{{name|decapitalized}}ResetPassword(),
+                                    topMargin: 12,
+                                    bottomMargin: 57
+                                )
+                            )
+                        ],
+                        sectionLayout: .secondaryButton
+                    ),
+                    {{name|capitalized}}Section(
+                        header: "",
+                        items: [.footer],
+                        sectionLayout: .footer
+                    )
+                ]
+            }
+
+        let inputValidation = Observable.combineLatest(
+            [
+                emailConfig.validationStatus.asObservable(),
+                passwordConfig.validationStatus.asObservable()
+            ])
+            .debug("inputValidation")
+            .skip(1)
+            .filter { validationStatuses in
+                validationStatuses.allSatisfy { $0 == .validated }
+            }
+//            .distinctUntilChanged()
+
+        let loginRequest = inputValidation
+            .debug("loginRequestDebug")
+            .show(activity)
+            .withUnretained(self)
+            .flatMap { viewModel, _ in
+                viewModel.apiService.{{name|decapitalized}}(
+                    email: emailText.value,
+                    password: passwordText.value
+                )
+                .asObservable()
+                .materialize()
+            }
+            .hide(activity)
+            .share()
+
+        let addressBookUser = loginRequest
+            .elements()
+            .mapToVoid()
+            .show(activity)
+            .withUnretained(self)
+            .flatMap { viewModel, _ in
+                viewModel.userService.getAddressBookUser()
+                    .asObservable()
+                    .materialize()
+            }
+            .hide(activity)
+            .share()
+
+        let userDidLogin = addressBookUser
+            .elements()
+            .asDriverOnErrorJustComplete()
+
+        let errors = Observable.merge(
+            loginRequest.errors(),
+            addressBookUser.errors()
+        )
+        .compactMap { $0 as? MintedError }
+        .asDriverOnErrorJustComplete()
+
+        let layout = items
+            .debug("layout change")
+            .map { sections in
+                sections.map(\.layoutSection)
+            }
+
+        return Output(
+            userDidLogin: userDidLogin,
+            errors: errors,
+            activity: activity.asDriverOnErrorJustComplete(),
+            items: items.asDriverOnErrorJustComplete(),
+            layout: layout.asDriverOnErrorJustComplete()
+        )
+    }
+}
+
+// MARK: - Configurations
+
+extension {{name|capitalized}}ViewModel {
+    func createEmailConfiguration(text: BehaviorRelay<String>, triggerValidation: Observable<Void>) -> TextFieldCellConfiguration {
+        .init(
+            title: "",
+            placeholder: Localizables.{{name|decapitalized}}YourEmail(),
+            keyboardType: .default,
+            autocapitalization: .none,
+            validation: .email,
+            text: text,
+            validationStatus: BehaviorRelay<TextFieldValidationStatus>(value: .normal),
+            immediateValidation: false,
+            triggerValidation: triggerValidation
+        )
+    }
+
+    func createPasswordConfiguration(text: BehaviorRelay<String>, triggerValidation: Observable<Void>) -> TextFieldCellConfiguration {
+        .init(
+            title: "",
+            placeholder: Localizables.{{name|decapitalized}}Password(),
+            valueType: .password,
+            keyboardType: .default,
+            autocapitalization: .none,
+            validation: .password,
+            text: text,
+            validationStatus: BehaviorRelay<TextFieldValidationStatus>(value: .normal),
+            immediateValidation: false,
+            triggerValidation: triggerValidation,
+            lastOne: true
+        )
+    }
+}

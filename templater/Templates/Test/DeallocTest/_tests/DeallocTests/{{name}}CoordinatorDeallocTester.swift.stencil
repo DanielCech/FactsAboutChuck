@@ -1,0 +1,58 @@
+//
+//  {{name|capitalized}}CoordinatorDeallocTester.swift
+//  Minted Tests
+//
+//  Created by Daniel Cech on 12/10/2020.
+//  Copyright © 2020 STRV. All rights reserved.
+//
+
+import DeallocTests
+import Foundation
+@testable import Minted
+import Swinject
+
+class {{name|capitalized}}CoordinatorDeallocTester: DeallocTester {
+    var {{name|decapitalized}}Coordinator: {{name|capitalized}}Coordinator? {
+        applyAssembliesToContainer()
+
+        return {{name|capitalized}}Coordinator(assembler: assembler, parent: nil)
+    }
+
+    func test_{{name|decapitalized}}CoordinatorDealloc() {
+        presentingController = showPresentingController()
+
+        deallocTests = [
+            {% for controller in controllers %}
+            DeallocTest(objectCreation: { [weak self] _ in
+                    self?.{{name|decapitalized}}Coordinator?.make{{controller|capitalized}}ViewController()
+                }
+            ),
+            {% endfor %}
+            DeallocTest(
+                // swiftlint:disable:next unowned_variable_capture
+                objectCreation: { [unowned self] _ in
+                    {{name|capitalized}}Coordinator(assembler: self.assembler, parent: nil)
+                }
+            )
+        ]
+
+        let expectation = self.expectation(description: "test_{{name|decapitalized}}CoordinatorDealloc")
+
+        performDeallocTest(
+            deallocTests: deallocTests,
+            expectation: expectation
+        )
+
+        waitForExpectations(timeout: 200, handler: nil)
+    }
+    
+    override func applyAssembliesToContainer() {
+        assembler.apply(
+            assemblies: [
+                ManagerAssembly(),
+                ServiceAssembly(),
+                ViewModelAssembly()
+            ]
+        )
+    }
+}

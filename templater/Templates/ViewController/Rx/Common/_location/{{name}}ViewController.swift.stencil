@@ -1,0 +1,55 @@
+//
+//  {{fileName}}
+//  {{projectName}}
+//
+//  Created by {{author}} on {{date}}.
+//  {{copyright}}
+//
+
+import RxCocoa
+import RxSwift
+import UIKit
+
+class {{name|capitalized}}ViewController: {{superClass}}, ViewModelContaining {
+    // MARK: IBOutlets
+
+    // MARK: Public Properties
+
+    // swiftlint:disable:next implicitly_unwrapped_optional
+    weak var coordinator: {{name|capitalized}}ViewEventHandling!
+
+    // swiftlint:disable:next implicitly_unwrapped_optional
+    var viewModel: {{name|capitalized}}ViewModel!
+    var disposeBag: DisposeBag = DisposeBag()
+
+    // MARK: Private Properties
+
+    // MARK: Lifecycle
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        setupView()
+    }
+
+    func bindToViewModel() {
+        let viewWillAppear = rx.sentMessage(#selector(UIViewController.viewWillAppear(_:))).mapToVoid()
+        let input = {{name|capitalized}}ViewModel.Input(viewWillAppear: viewWillAppear)
+        let output = viewModel.transform(input: input)
+
+        output.errors.drive(onNext: { [weak self] error in
+            guard let self = self else {
+                return
+            }
+            self.showErrorAlert(title: "Something went wrong", message: error.localizedDescription)
+        }).disposed(by: disposeBag)
+    }
+}
+
+// MARK: Private Methods
+
+private extension {{name|capitalized}}ViewController {
+    func setupView() {
+        bindToViewModel()
+    }
+}

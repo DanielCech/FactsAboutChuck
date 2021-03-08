@@ -1,0 +1,24 @@
+//
+//  {{fileName}}
+//  {{projectName}}
+//
+//  Created by {{author}} on {{date}}.
+//  {{copyright}}
+//
+
+import UIKit
+
+class {{name|capitalized}}FooterCell: UICollectionViewCell, NibLoadableView {
+    @IBOutlet private var comingSoonLabel: UILabel!
+    @IBOutlet private var facebookLabel: UILabel!
+    @IBOutlet private var facebookImage: UIImageView!
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+
+        comingSoonLabel.apply(style: .borderedView)
+        comingSoonLabel.attributedText = Localizables.{{name|decapitalized}}ComingSoon().uppercased().styled(with: .verySmallButton)
+        facebookLabel.attributedText = Localizables.{{name|decapitalized}}FacebookLoginDescription().styled(with: .descriptionParagraph)
+    }
+}

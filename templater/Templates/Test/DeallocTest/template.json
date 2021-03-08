@@ -1,0 +1,18 @@
+{
+  "description": "Template for DeallocTest",
+  "status": "draft",
+  "derivedFrom": null,
+  "parameters": [
+    {
+      "name": "name",
+      "type": "string",
+      "description": "A name of coordinator without -Coordinator suffix"
+    },
+    {
+      "name": "controllers",
+      "type": "stringArray",
+      "description": "A space-separated list of view controllers without -ViewController suffix"
+    }
+  ],
+  "validationContext": {}
+}

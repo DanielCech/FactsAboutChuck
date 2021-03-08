@@ -2,13 +2,17 @@
 //  ViewModelAssembly.swift
 //  FactsAboutChuck
 //
-//  Created by Jan Kaltoun on 01/12/2018.
-//  Copyright © 2018 STRV. All rights reserved.
+//  Created by Dan Cech on 07/03/2021.
+//  Copyright � 2021 STRV. All rights reserved.
 //
 
 import Swinject
 
 // swiftlint:disable force_unwrapping
 final class ViewModelAssembly: Assembly {
-    func assemble(container _: Container) {}
+    func assemble(container: Container) {
+        container.register(JokeListViewModel.self) { _ in
+            JokeListViewModel()
+        }.inObjectScope(.graph)
+    }
 }

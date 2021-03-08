@@ -1,0 +1,157 @@
+//
+//  {{fileName}}
+//  {{projectName}}
+//
+//  Created by {{author}} on {{date}}.
+//  {{copyright}}
+//
+
+import RxCocoa
+import RxDataSources
+import RxSwift
+import UIKit
+
+final class {{name}}ViewController: UIViewController, ViewModelContaining {
+    // MARK: IBOutlets
+{% if fakeNavbar %}
+    @IBOutlet private var fakeNavbar: UIView!
+    @IBOutlet private var fakeNavbarTitleLabel: UILabel!
+    @IBOutlet private var fakeNavbarTopConstraint: NSLayoutConstraint!
+{% endif %}
+    @IBOutlet private var {{name}}TableView: UITableView!
+
+    // MARK: Public Properties
+
+    // swiftlint:disable:next implicitly_unwrapped_optional
+    weak var coordinator: {{name|capitalized}}ViewEventHandling!
+
+    // swiftlint:disable:next implicitly_unwrapped_optional
+    var viewModel: {{name}}ViewModel!
+    var disposeBag: DisposeBag = DisposeBag()
+
+    // MARK: Private Properties
+    private lazy var dataSource = RxTableViewSectionedReloadDataSource<{{name}}SectionModel>(configureCell: { _, tableView, indexPath, item -> UITableViewCell in
+        switch item {
+{% for cell in tableViewCells %}
+        case .{{cell}}:
+            let cell: {{cell|capitalized}}TableViewCell = tableView.dequeueReusableCell(for: indexPath)
+            return cell
+{% endfor %}
+        }
+        })
+
+    // MARK: Lifecycle
+
+    deinit {
+        print("Deinit \(self)")
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        setupView()
+    }
+}
+
+{% if sectionHeaders %}
+// MARK: - Table headers
+
+extension {{name}}ViewController: UITableViewDelegate {
+    func tableView(_: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let sectionTitle = dataSource.sectionModels[section].model else {
+            return nil
+        }
+
+        let headerView: SimpleSectionHeader = {{name}}TableView.dequeueReusableHeaderFooterView()
+        headerView.setup(title: sectionTitle)
+        return headerView
+    }
+
+    func tableView(_: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+}
+{% endif %}
+
+// MARK: - Binding
+
+extension {{name}}ViewController {
+    func bindToView() {
+{% if fakeNavbar %}
+        {{name}}TableView.rx.contentOffset.map { $0.y > 100 }.distinctUntilChanged()
+            .withUnretained(self)
+            .bind(onNext: { _, scrolled in
+                self.fakeNavbarTopConstraint.constant = scrolled ? 0 : -92
+                let animator = UIViewPropertyAnimator(duration: 0.3, curve: .easeOut, animations: {
+                    self.view.layoutIfNeeded()
+                    })
+
+                animator.startAnimation()
+                })
+            .disposed(by: disposeBag)
+{% endif %}
+{% if sectionHeaders %}
+        {{name}}TableView
+            .rx.setDelegate(self)
+            .disposed(by: disposeBag)
+{% endif %}
+    }
+
+    func bindToViewModel() {
+        let viewWillAppear = rx.sentMessage(#selector(UIViewController.viewWillAppear(_:))).mapToVoid()
+        let input = {{name}}ViewModel.Input(
+            viewWillAppear: viewWillAppear
+        )
+        let output = viewModel.transform(input: input)
+        output.{{name}}Sections.drive({{name}}TableView.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
+    }
+
+    func bindToCoordinator() {
+        {{name}}TableView.rx.modelSelected({{name}}Section.self)
+            .bind(onNext: { [weak self] section in
+                switch section {
+{% for cell in tableViewCells %}
+                case .{{cell}}:
+                    break
+{% endfor %}
+                }
+
+            }).disposed(by: disposeBag)
+    }
+}
+
+// MARK: - Private Methods
+
+private extension {{name}}ViewController {
+    func setupView() {
+        setupIBOutlets()
+        bindToView()
+        bindToViewModel()
+        bindToCoordinator()
+    }
+
+    func setupIBOutlets() {
+{% if fakeNavbar %}
+        fakeNavbarTitleLabel.attributedText = R.string.localizable.{{name}}Title().styled(with: .dashboardActivityTitle)
+        fakeNavbar.apply(style: .shadow)
+{% endif %}
+
+        {{name}}TableView.separatorStyle = .none
+        {{name}}TableView.rowHeight = UITableView.automaticDimension
+{% for cell in tableViewCells %}
+        {{name}}TableView.register({{cell|capitalized}}TableViewCell.self) {% endfor %}
+{% if sectionHeader %}
+        {{name}}TableView.registerHeaderFooterView({{name}}SectionHeader.self)
+{% endif %}
+
+{% if tableViewHeader %}
+		let tableHeader = {{name}}Header.nibInstance
+        accountTableView.setTableHeader(header: tableHeader, height: 200) // TODO: set header height
+{% endif %}
+
+{% if tableViewFooter %}
+		let tableFooter = {{name}}Footer.nibInstance
+        accountTableView.setTableFooter(footer: tableFooter, height: 200) // TODO: set footer height
+{% endif %}
+    }
+}

@@ -1,0 +1,125 @@
+//
+//  {{fileName}}
+//  {{projectName}}
+//
+//  Created by {{author}} on {{date}}.
+//  {{copyright}}
+//
+
+import RxCocoa
+import RxDataSources
+import RxSwift
+import UIKit
+
+class {{name|capitalized}}ViewController: {{viewControllerSuperclass}}ViewController, ViewModelContaining {
+    // MARK: IBOutlets
+    @IBOutlet private var collectionView: UICollectionView!
+
+    // MARK: Public Properties
+
+    // swiftlint:disable:next implicitly_unwrapped_optional
+    weak var coordinator: {{name|capitalized}}ViewEventHandling!
+
+    // swiftlint:disable:next implicitly_unwrapped_optional
+    var viewModel: {{name|capitalized}}ViewModel!
+    var disposeBag = DisposeBag()
+
+    // MARK: Private Properties
+    private lazy var dataSource = makeDataSource()
+
+    // MARK: Lifecycle
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        setupView()
+    }
+
+    func bindToViewModel() {
+        let viewWillAppear = rx.viewWillAppear.asObservable().mapToVoid()
+
+        let input = {{name|capitalized}}ViewModel.Input(
+            viewWillAppear: viewWillAppear
+        )
+
+        let output = viewModel.transform(input: input)
+
+        // CollectionView Layout
+        output.{{name|decapitalized}}Layout
+            .drive(onNext: { [weak self] layout in
+                self?.setCollectionViewLayout(from: layout)
+            })
+            .disposed(by: disposeBag)
+
+        // Data Source
+        output.{{name|decapitalized}}Items
+            .drive(collectionView.rx.items(dataSource: dataSource))
+            .disposed(by: disposeBag)
+
+        output.errors
+            .debug("errors")
+            .drive(errorBinding)
+            .disposed(by: disposeBag)
+
+        output.activity
+            .debug("activity")
+            .drive(activityIndicatorBinding)
+            .disposed(by: disposeBag)
+    }
+}
+
+// MARK: Private Methods
+
+private extension {{name|capitalized}}ViewController {
+    func setupView() {
+        bindToViewModel()
+        bindActions()
+        setupCollectionView()
+    }
+}
+
+extension {{name|capitalized}}ViewController: ErrorPromptable, ActivityIndicatorPromptable {}
+
+private extension {{name|capitalized}}ViewController {
+    func bindActions() {
+
+    }
+}
+
+// MARK: - CollectionView Setup
+
+private extension {{name|capitalized}}ViewController {
+    func setupCollectionView() {
+        collectionView.contentInsetAdjustmentBehavior = .never
+        collectionView.clipsToBounds = false
+
+        // Cell's registration
+
+        collectionView.register(ContactCell.self)
+    }
+
+    func makeDataSource() -> RxCollectionViewSectionedReloadDataSource<{{name|capitalized}}Section> {
+        RxCollectionViewSectionedReloadDataSource<{{name|capitalized}}Section>(
+            configureCell: { _, _, _, _ in
+                // TODO: Dequeue cell
+                UICollectionViewCell()
+            })
+    }
+
+    func setCollectionViewLayout(from _: [ProfileLayoutSection]) {
+        let configuration = UICollectionViewCompositionalLayoutConfiguration()
+        configuration.interSectionSpacing = FileConstants.interSectionSpacing
+        collectionView.collectionViewLayout = UICollectionViewCompositionalLayout(
+            sectionProvider: { _, _ -> NSCollectionLayoutSection? in
+                // let section = sections[sectionIndex]
+                // TODO: Return Layout
+                nil
+            },
+            configuration: configuration
+        )
+    }
+}
+
+private enum FileConstants {
+    static let interSectionSpacing: CGFloat = 20
+}

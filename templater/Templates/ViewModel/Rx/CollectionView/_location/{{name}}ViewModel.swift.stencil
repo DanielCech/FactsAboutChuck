@@ -1,0 +1,46 @@
+//
+//  {{fileName}}
+//  {{projectName}}
+//
+//  Created by {{author}} on {{date}}.
+//  {{copyright}}
+//
+
+import RxCocoa
+import RxSwift
+import RxSwiftExt
+
+{% if viewModelSuperclass %}
+final class {{name|capitalized}}ViewModel: {{viewModelSuperclass}}, ViewModelType {
+{% else %}
+final class {{name|capitalized}}ViewModel: ViewModelType {
+{% endif %}
+
+    struct Input {
+        let viewWillAppear: Observable<Void>
+    }
+
+    struct Output {
+        let errors: Driver<{{errorType|capitalized}}>
+        let activity: Driver<(Bool, String?)> // Show loading HUD with some optional text
+        let items: Driver<[{{name|capitalized}}Section]>
+        let layout: Driver<[{{name|capitalized}}LayoutSection]>
+    }
+
+    let apiService: {{apiService|capitalized}}Servicing
+
+    init(apiService: {{apiService|capitalized}}Servicing) {
+        self.apiService = apiService
+    }
+
+    func transform(input: Input) -> Output {
+        let errors = Observable<{{errorType}}>.empty().asDriverOnErrorJustComplete()
+
+        return Output(
+            errors: errors,
+            activity: activity.asDriverOnErrorJustComplete(),
+            items: .empty(),
+            layout: .empty()
+        )
+    }
+}

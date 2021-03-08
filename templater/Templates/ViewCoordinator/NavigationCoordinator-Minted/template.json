@@ -1,0 +1,19 @@
+{
+  "description": "Navigation Coordinator on Minted project",
+  "status": "draft",
+  "derivedFrom": null,
+  "parameters": [
+    {
+      "name": "name",
+      "type": "string",
+      "description": "A name of coordinator without -Coordinator suffix"
+    },
+    {
+      "name": "coordinatorControllers",
+      "type": "stringArray",
+      "description": "Array of controller names handled by this coordinator without suffix -ViewController"
+    }
+  ],
+  "validationContext": {},
+  "dependencies": [ ]
+}

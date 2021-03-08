@@ -1,0 +1,36 @@
+//
+//  {{fileName}}
+//  {{projectName}}
+//
+//  Created by {{author}} on {{date}}.
+//  {{copyright}}
+//
+
+import RxCocoa
+import RxSwift
+import UIKit
+
+class {{name|capitalized}}ViewController: {{superClass}} {
+    // MARK: IBOutlets
+
+    // MARK: Public Properties
+
+    // MARK: Private Properties
+    private let disposeBag: DisposeBag = DisposeBag()
+
+    // MARK: Lifecycle
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        setupView()
+    }
+}
+
+// MARK: Private Methods
+
+private extension {{name|capitalized}}ViewController {
+    func setupView() {
+        
+    }
+}

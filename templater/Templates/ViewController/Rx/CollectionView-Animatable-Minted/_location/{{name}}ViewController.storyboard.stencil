@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Yeo-G4-eQc">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--{{name|capitalized}} View Controller-->
+        <scene sceneID="cRK-YK-bfP">
+            <objects>
+                <viewController id="Yeo-G4-eQc" customClass="{{name}}ViewController" customModule="Minted" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="no1-v9-KWE">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="KzQ-nA-66W">
+                                <rect key="frame" x="0.0" y="100" width="414" height="796"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="6u8-8c-h6K">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dkU-qe-MZD" customClass="NavigationView" customModule="Minted" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="OzU-sp-tmp"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="8aP-Jj-ozg"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="dkU-qe-MZD" firstAttribute="top" secondItem="no1-v9-KWE" secondAttribute="top" id="8vU-Yi-t8u"/>
+                            <constraint firstAttribute="trailing" secondItem="dkU-qe-MZD" secondAttribute="trailing" id="Jji-HG-o5a"/>
+                            <constraint firstItem="8aP-Jj-ozg" firstAttribute="trailing" secondItem="KzQ-nA-66W" secondAttribute="trailing" id="UN6-dq-EV0"/>
+                            <constraint firstItem="dkU-qe-MZD" firstAttribute="leading" secondItem="8aP-Jj-ozg" secondAttribute="leading" id="jZK-tC-jhr"/>
+                            <constraint firstItem="KzQ-nA-66W" firstAttribute="leading" secondItem="8aP-Jj-ozg" secondAttribute="leading" id="jsp-mj-s9S"/>
+                            <constraint firstItem="KzQ-nA-66W" firstAttribute="top" secondItem="dkU-qe-MZD" secondAttribute="bottom" id="km2-3n-RSb"/>
+                            <constraint firstAttribute="bottom" secondItem="KzQ-nA-66W" secondAttribute="bottom" id="nNI-jm-Xqb"/>
+                        </constraints>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <connections>
+                        <outlet property="collectionView" destination="KzQ-nA-66W" id="bUA-Kh-3vz"/>
+                        <outlet property="navigationView" destination="dkU-qe-MZD" id="bEA-VK-JWj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Mu-Pt-XN4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-72.463768115942031" y="105.80357142857143"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

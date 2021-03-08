@@ -1,0 +1,22 @@
+//
+//  {{fileName}}
+//  {{projectName}}
+//
+//  Created by {{author}} on {{date}}.
+//  {{copyright}}
+//
+
+import DeallocTests
+import Foundation
+@testable import {{projectName}}
+
+extension {{name|capitalized}}Coordinator: DeallocTestable {}
+
+{% for controller in controllers%}
+extension {{controller|capitalized}}ViewModel: DeallocTestable {}
+{% endfor %}
+
+
+{% for controller in controllers%}
+extension {{controller|capitalized}}ViewController: DeallocTestable {}
+{% endfor %}

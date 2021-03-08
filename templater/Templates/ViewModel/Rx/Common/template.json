@@ -1,0 +1,33 @@
+{ 
+  "description": "Common ViewModel with Rx",
+  "status": "draft",
+  "derivedFrom": null,
+  "parameters": [
+    {
+      "name": "apiService",
+      "type": "string",
+      "defaultValue": "Api",
+      "description": "API Service class providing the API for this ViewModel without -Suffix suffix"
+    },
+    {
+      "name": "viewModelSuperclass",
+      "type": "string",
+      "defaultValue": "",
+      "description": "Base class for view model without -ViewModel suffix"
+    },
+    {
+      "name": "inputFields",
+      "type": "stringArray",
+      "defaultValue": ["email", "password"],
+      "description": "List of input field names"
+    },
+    {
+      "name": "apiEndpoint",
+      "type": "string",
+      "defaultValue": "endpoint",
+      "description": "Endpoint for API communication"
+    }
+  ],
+  "validationContext": {},
+  "dependencies": ["Protocol/ViewModelType"]
+}
