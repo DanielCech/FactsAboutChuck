@@ -14,18 +14,12 @@ import UIKit
 
 // swiftlint:disable implicitly_unwrapped_optional
 
-final class {{name|capitalized}}ViewController: UIViewController, ViewModelContaining, FakeNavBarControlling {
+final class {{name|capitalized}}ViewController: UIViewController, ViewModelContaining {
     // MARK: IBOutlets
-    @IBOutlet private var fakeNavbar: UIView!
-    @IBOutlet private var fakeNavbarTitleLabel: UILabel!
-    @IBOutlet private var fakeNavbarTopConstraint: NSLayoutConstraint!
-    @IBOutlet private var {{name|decapitalized}}TableView: UITableView!
-
-    private var tableHeader: {{name|capitalized}}Header!
-    private var tableFooter: {{name|capitalized}}Footer!
+    @IBOutlet private var tableView: UITableView!
 
     // MARK: Public Properties
-    weak var coordinator: {{coordinator}}Coordinating!
+    weak var coordinator: {{name|capitalized}}ViewEventHandling!
 
     var viewModel: {{name|capitalized}}ViewModel!
     var disposeBag = DisposeBag()
@@ -33,9 +27,9 @@ final class {{name|capitalized}}ViewController: UIViewController, ViewModelConta
     // MARK: Private Properties
     private lazy var dataSource = RxTableViewSectionedReloadDataSource<{{name|capitalized}}SectionModel>(configureCell: { _, tableView, indexPath, item -> UITableViewCell in
         switch item {
-        case let .{{name|decapitalized}}Item(cellItem):
-            let cell: AddSheetTableViewCell = tableView.dequeueReusableCell(for: indexPath)
-            cell.setup(with: cellItem)
+        case let .item(model):
+            let cell: {{cellClass|capitalized}} = tableView.dequeueReusableCell(for: indexPath)
+            cell.setup(with: model)
             return cell
         }
     })
@@ -53,103 +47,31 @@ final class {{name|capitalized}}ViewController: UIViewController, ViewModelConta
     }
 }
 
-// MARK: - Table headers
-
-extension {{name|capitalized}}ViewController: UITableViewDelegate {
-    func tableView(_: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let sectionTitle = dataSource.sectionModels[section].model else {
-            return nil
-        }
-
-        let headerView: SimpleSectionHeader = {{name|decapitalized}}TableView.dequeueReusableHeaderFooterView()
-        headerView.setup(title: sectionTitle)
-        return headerView
-    }
-
-    func tableView(_: UITableView, heightForHeaderInSection _: Int) -> CGFloat {
-        return UITableView.automaticDimension
-    }
-}
-
 // MARK: - Binding
 
 extension {{name|capitalized}}ViewController {
-    func bindToView() {
-        handleFakeNabBarAnimation(
-            tableView: {{name|decapitalized}}TableView,
-            fakeNavbarTopConstraint: fakeNavbarTopConstraint
-        )
-        .disposed(by: disposeBag)
-
-        {{name|decapitalized}}TableView
-            .rx.setDelegate(self)
-            .disposed(by: disposeBag)
-    }
+    func bindToView() {}
 
     func bindToViewModel() {
         let viewWillAppear = rx.sentMessage(#selector(UIViewController.viewWillAppear(_:))).mapToVoid()
+
         let input = {{name|capitalized}}ViewModel.Input(
-            viewWillAppear: viewWillAppear,
-            logoutButtonTapped: tableFooter.logoutButton.rx.tap.asObservable()
+            viewWillAppear: viewWillAppear
         )
 
         let output = viewModel.transform(input: input)
-        output.{{name|decapitalized}}Sections.drive({{name|decapitalized}}TableView.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
-
-        output.activeSubscription.asObservable()
-            .map { !$0 }
-            .bind(to: tableHeader.premiumBadge.rx.isHidden)
-            .disposed(by: disposeBag)
-
-        output.user
-            .drive(onNext: { [weak self] user in
-                self?.tableHeader.setupView(
-                    name: user?.name ?? "",
-                    email: user?.email ?? user?.socialEmail ?? "",
-                    avatarId: user?.avatarId ?? 1,
-                    setAvatarClosure: { [weak self] in
-                        self?.coordinator.showAvatarSelectionSheet()
-                    }
-                )
-            })
+        output.sections
+            .drive(tableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
     }
 
     // swiftlint:disable:next cyclomatic_complexity
     func bindToCoordinator() {
-        {{name|decapitalized}}TableView.rx.modelSelected({{name|capitalized}}Section.self)
-            .bind(onNext: { [weak self] section in
-                switch section {
-                case let .{{name|decapitalized}}Item(item):
-                    switch item {
-                    case .personalInformation:
-                        self?.coordinator.showPersonalInformation()
-                    case .emailAddress:
-                        break
-                    case .password:
-                        self?.coordinator.showChangePassword()
-                    case .subscription:
-                        self?.coordinator.showSubscription()
-                    case .family{{name|capitalized}}:
-                        self?.coordinator.showHouseholdMembers()
-                    case .notifications:
-                        self?.coordinator.showNotifications()
-                    case .darkMode:
-                        break
-                    case .aboutHarbor:
-                        self?.coordinator.showWebViewController(mode: .about)
-                    case .referFriends:
-                        break
-                    case .reportBug:
-                        self?.coordinator.showReportBugController()
-                    case .help:
-                        self?.coordinator.showWebViewController(mode: .help)
-                    case .termsAndConditions:
-                        self?.coordinator.showWebViewController(mode: .termsAndConditions)
-                    }
-                }
-
-            }).disposed(by: disposeBag)
+        tableView.rx.modelSelected({{name|capitalized}}Section.self)
+            .bind(onNext: { [weak self] _ in
+                // TODO:
+            })
+            .disposed(by: disposeBag)
     }
 }
 
@@ -161,32 +83,16 @@ private extension {{name|capitalized}}ViewController {
         bindToView()
         bindToViewModel()
         bindToCoordinator()
+
+        title = "{{name|capitalized}}"
     }
 
     func setupIBOutlets() {
-        fakeNavbarTitleLabel.attributedText = R.string.localizable.profile{{name|capitalized}}{{name|capitalized}}().styled(with: .dashboardActivityTitle)
-        fakeNavbar.apply(style: .shadow)
+        tableView.separatorStyle = .none
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedSectionHeaderHeight = 85
+        tableView.sectionHeaderHeight = UITableView.automaticDimension
 
-        {{name|decapitalized}}TableView.separatorStyle = .none
-        {{name|decapitalized}}TableView.showsVerticalScrollIndicator = false
-        {{name|decapitalized}}TableView.rowHeight = UITableView.automaticDimension
-        {{name|decapitalized}}TableView.estimatedSectionHeaderHeight = 85
-        {{name|decapitalized}}TableView.sectionHeaderHeight = UITableView.automaticDimension
-        {{name|decapitalized}}TableView.register(AddSheetTableViewCell.self)
-        {{name|decapitalized}}TableView.registerHeaderFooterView(SimpleSectionHeader.self)
-
-        tableHeader = {{name|capitalized}}Header.nibInstance
-        {{name|decapitalized}}TableView.setTableHeader(header: tableHeader, height: 290)
-
-        tableFooter = {{name|capitalized}}Footer.nibInstance
-        {{name|decapitalized}}TableView.setTableFooter(footer: tableFooter, height: 191)
-
-        // I needed to disable animations because when user selected the Profile tab, the table header was shown animated
-        UIView.setAnimationsEnabled(false)
-
-        DispatchQueue.main.asyncAfter(
-            deadline: DispatchTime.now() + Double(Int64(0.1 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)) {
-            UIView.setAnimationsEnabled(true)
-        }
+        tableView.register({{cellClass|capitalized}}.self)
     }
 }

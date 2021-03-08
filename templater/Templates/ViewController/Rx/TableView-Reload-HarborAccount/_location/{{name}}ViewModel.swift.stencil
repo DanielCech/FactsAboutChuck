@@ -14,9 +14,6 @@ typealias {{name|capitalized}}SectionModel = SectionModel<String?, {{name|capita
 
 final class {{name|capitalized}}ViewModel: ViewModelType {
     // MARK: Private properties
-    private let apiService: AuthenticationFlowServicing
-    private let inAppPurchaseManager: InAppPurchaseManaging
-    private let keychainManager: KeychainManaging
     private let disposeBag = DisposeBag()
 
     // MARK: Lifecycle
@@ -25,15 +22,7 @@ final class {{name|capitalized}}ViewModel: ViewModelType {
         print("Deinit \(self)")
     }
 
-    init(
-        apiService: AuthenticationFlowServicing,
-        inAppPurchaseManager: InAppPurchaseManaging,
-        keychainManager: KeychainManaging
-    ) {
-        self.apiService = apiService
-        self.inAppPurchaseManager = inAppPurchaseManager
-        self.keychainManager = keychainManager
-    }
+    init() {}
 }
 
 // MARK: - Input / output transformation
@@ -41,70 +30,25 @@ final class {{name|capitalized}}ViewModel: ViewModelType {
 extension {{name|capitalized}}ViewModel {
     struct Input {
         let viewWillAppear: Observable<Void>
-        let logoutButtonTapped: Observable<Void>
     }
 
     struct Output {
-        let {{name|decapitalized}}Sections: Driver<[{{name|capitalized}}SectionModel]>
-        let activeSubscription: Driver<Bool>
-        let user: Driver<UserAuth?>
+        let sections: Driver<[{{name|capitalized}}SectionModel]>
     }
 
     func transform(input: {{name|capitalized}}ViewModel.Input) -> {{name|capitalized}}ViewModel.Output {
-        let user: Observable<UserAuth?> = input.viewWillAppear
-            .map { [weak self] _ in
-                self?.keychainManager.user
-            }
-
-        let sections: Observable<[{{name|capitalized}}SectionModel]> = user.map { user in
-            var profile = {{name|capitalized}}SectionModel(
-                model: R.string.localizable.profile{{name|capitalized}}{{name|capitalized}}(),
-                items: [
-                    .{{name|decapitalized}}Item(.personalInformation),
-                    // TODO: temporary hidden // .{{name|decapitalized}}Item(.subscription),
-                    .{{name|decapitalized}}Item(.family{{name|capitalized}})
-                ]
-            )
-            if user?.email != nil {
-                profile.items.insert(.{{name|decapitalized}}Item(.password), at: 1)
-            }
-            return [profile,
+        let sections: Observable<[{{name|capitalized}}SectionModel]> = input.viewWillAppear
+            .map { _ in
+                [
                     {{name|capitalized}}SectionModel(
-                        model: R.string.localizable.profile{{name|capitalized}}Preferences(),
-                        items: [
-                            .{{name|decapitalized}}Item(.notifications)
+                        model: "",
+                        items: []  // TODO: add items here
+                    )
                         ]
-                    ),
-                    {{name|capitalized}}SectionModel(
-                        model: R.string.localizable.profile{{name|capitalized}}About(),
-                        items: [
-                            .{{name|decapitalized}}Item(.aboutHarbor),
-                            .{{name|decapitalized}}Item(.reportBug),
-                            .{{name|decapitalized}}Item(.help),
-                            .{{name|decapitalized}}Item(.termsAndConditions)
-                        ]
-                    )]
         }
 
-        input.logoutButtonTapped
-            .withUnretained(self)
-            .subscribeNext { viewModel, _ in
-                // Trigger logout and don't wait for completion
-                viewModel.apiService.logout()
-                    .subscribeNext {}
-                    .disposed(by: viewModel.disposeBag)
-
-                viewModel.keychainManager.logout()
-                NotificationCenter.default.post(name: .logoutNotification, object: nil)
-            }
-            .disposed(by: disposeBag)
-
-        let activeSubscription = inAppPurchaseManager.activeSubscription
-
         return Output(
-            {{name|decapitalized}}Sections: sections.asDriverOnErrorJustComplete(),
-            activeSubscription: Driver.just(activeSubscription),
-            user: user.asDriverOnErrorJustComplete()
+            sections: sections.asDriverOnErrorJustComplete()
         )
     }
 }

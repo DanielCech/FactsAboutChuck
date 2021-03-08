@@ -1,13 +1,13 @@
 //
-//  LibrarySection.swift
-//  Harbor
+//  {{fileName}}
+//  {{projectName}}
 //
-//  Created by Daniel Cech on 5/19/20.
-//  Copyright © 2020 25MP Corp. All rights reserved.
+//  Created by {{author}} on {{date}}.
+//  {{copyright}}
 //
 
 // MARK: - Library table view cell types
 
 enum {{name|capitalized}}Section {
-    case {{name|decapitalized}}Section
+    case item(Joke)
 }
