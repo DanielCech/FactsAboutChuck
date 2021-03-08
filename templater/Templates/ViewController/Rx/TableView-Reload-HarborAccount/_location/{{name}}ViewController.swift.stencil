@@ -1,9 +1,9 @@
 //
-//  JokeListViewController.swift
-//  FactsAboutChuck
+//  {{fileName}}
+//  {{projectName}}
 //
-//  Created by Dan Cech on 08/03/2021.
-//  Copyright � 2021 STRV. All rights reserved.
+//  Created by {{author}} on {{date}}.
+//  {{copyright}}
 //
 
 import MessageUI
@@ -14,26 +14,26 @@ import UIKit
 
 // swiftlint:disable implicitly_unwrapped_optional
 
-final class JokeListViewController: UIViewController, ViewModelContaining, FakeNavBarControlling {
+final class {{name|capitalized}}ViewController: UIViewController, ViewModelContaining, FakeNavBarControlling {
     // MARK: IBOutlets
     @IBOutlet private var fakeNavbar: UIView!
     @IBOutlet private var fakeNavbarTitleLabel: UILabel!
     @IBOutlet private var fakeNavbarTopConstraint: NSLayoutConstraint!
-    @IBOutlet private var jokeListTableView: UITableView!
+    @IBOutlet private var {{name|decapitalized}}TableView: UITableView!
 
-    private var tableHeader: JokeListHeader!
-    private var tableFooter: JokeListFooter!
+    private var tableHeader: {{name|capitalized}}Header!
+    private var tableFooter: {{name|capitalized}}Footer!
 
     // MARK: Public Properties
-    weak var coordinator: Coordinating!
+    weak var coordinator: {{coordinator}}Coordinating!
 
-    var viewModel: JokeListViewModel!
+    var viewModel: {{name|capitalized}}ViewModel!
     var disposeBag = DisposeBag()
 
     // MARK: Private Properties
-    private lazy var dataSource = RxTableViewSectionedReloadDataSource<JokeListSectionModel>(configureCell: { _, tableView, indexPath, item -> UITableViewCell in
+    private lazy var dataSource = RxTableViewSectionedReloadDataSource<{{name|capitalized}}SectionModel>(configureCell: { _, tableView, indexPath, item -> UITableViewCell in
         switch item {
-        case let .jokeListItem(cellItem):
+        case let .{{name|decapitalized}}Item(cellItem):
             let cell: AddSheetTableViewCell = tableView.dequeueReusableCell(for: indexPath)
             cell.setup(with: cellItem)
             return cell
@@ -55,46 +55,46 @@ final class JokeListViewController: UIViewController, ViewModelContaining, FakeN
 
 // MARK: - Table headers
 
-extension JokeListViewController: UITableViewDelegate {
+extension {{name|capitalized}}ViewController: UITableViewDelegate {
     func tableView(_: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let sectionTitle = dataSource.sectionModels[section].model else {
             return nil
         }
 
-        let headerView: SimpleSectionHeader = jokeListTableView.dequeueReusableHeaderFooterView()
+        let headerView: SimpleSectionHeader = {{name|decapitalized}}TableView.dequeueReusableHeaderFooterView()
         headerView.setup(title: sectionTitle)
         return headerView
     }
 
     func tableView(_: UITableView, heightForHeaderInSection _: Int) -> CGFloat {
-        UITableView.automaticDimension
+        return UITableView.automaticDimension
     }
 }
 
 // MARK: - Binding
 
-extension JokeListViewController {
+extension {{name|capitalized}}ViewController {
     func bindToView() {
         handleFakeNabBarAnimation(
-            tableView: jokeListTableView,
+            tableView: {{name|decapitalized}}TableView,
             fakeNavbarTopConstraint: fakeNavbarTopConstraint
         )
         .disposed(by: disposeBag)
 
-        jokeListTableView
+        {{name|decapitalized}}TableView
             .rx.setDelegate(self)
             .disposed(by: disposeBag)
     }
 
     func bindToViewModel() {
         let viewWillAppear = rx.sentMessage(#selector(UIViewController.viewWillAppear(_:))).mapToVoid()
-        let input = JokeListViewModel.Input(
+        let input = {{name|capitalized}}ViewModel.Input(
             viewWillAppear: viewWillAppear,
             logoutButtonTapped: tableFooter.logoutButton.rx.tap.asObservable()
         )
 
         let output = viewModel.transform(input: input)
-        output.jokeListSections.drive(jokeListTableView.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
+        output.{{name|decapitalized}}Sections.drive({{name|decapitalized}}TableView.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
 
         output.activeSubscription.asObservable()
             .map { !$0 }
@@ -117,10 +117,10 @@ extension JokeListViewController {
 
     // swiftlint:disable:next cyclomatic_complexity
     func bindToCoordinator() {
-        jokeListTableView.rx.modelSelected(JokeListSection.self)
+        {{name|decapitalized}}TableView.rx.modelSelected({{name|capitalized}}Section.self)
             .bind(onNext: { [weak self] section in
                 switch section {
-                case let .jokeListItem(item):
+                case let .{{name|decapitalized}}Item(item):
                     switch item {
                     case .personalInformation:
                         self?.coordinator.showPersonalInformation()
@@ -130,7 +130,7 @@ extension JokeListViewController {
                         self?.coordinator.showChangePassword()
                     case .subscription:
                         self?.coordinator.showSubscription()
-                    case .familyJokeList:
+                    case .family{{name|capitalized}}:
                         self?.coordinator.showHouseholdMembers()
                     case .notifications:
                         self?.coordinator.showNotifications()
@@ -155,7 +155,7 @@ extension JokeListViewController {
 
 // MARK: - Private Methods
 
-private extension JokeListViewController {
+private extension {{name|capitalized}}ViewController {
     func setupView() {
         setupIBOutlets()
         bindToView()
@@ -164,22 +164,22 @@ private extension JokeListViewController {
     }
 
     func setupIBOutlets() {
-        fakeNavbarTitleLabel.attributedText = R.string.localizable.profileJokeListJokeList().styled(with: .dashboardActivityTitle)
+        fakeNavbarTitleLabel.attributedText = R.string.localizable.profile{{name|capitalized}}{{name|capitalized}}().styled(with: .dashboardActivityTitle)
         fakeNavbar.apply(style: .shadow)
 
-        jokeListTableView.separatorStyle = .none
-        jokeListTableView.showsVerticalScrollIndicator = false
-        jokeListTableView.rowHeight = UITableView.automaticDimension
-        jokeListTableView.estimatedSectionHeaderHeight = 85
-        jokeListTableView.sectionHeaderHeight = UITableView.automaticDimension
-        jokeListTableView.register(AddSheetTableViewCell.self)
-        jokeListTableView.registerHeaderFooterView(SimpleSectionHeader.self)
+        {{name|decapitalized}}TableView.separatorStyle = .none
+        {{name|decapitalized}}TableView.showsVerticalScrollIndicator = false
+        {{name|decapitalized}}TableView.rowHeight = UITableView.automaticDimension
+        {{name|decapitalized}}TableView.estimatedSectionHeaderHeight = 85
+        {{name|decapitalized}}TableView.sectionHeaderHeight = UITableView.automaticDimension
+        {{name|decapitalized}}TableView.register(AddSheetTableViewCell.self)
+        {{name|decapitalized}}TableView.registerHeaderFooterView(SimpleSectionHeader.self)
 
-        tableHeader = JokeListHeader.nibInstance
-        jokeListTableView.setTableHeader(header: tableHeader, height: 290)
+        tableHeader = {{name|capitalized}}Header.nibInstance
+        {{name|decapitalized}}TableView.setTableHeader(header: tableHeader, height: 290)
 
-        tableFooter = JokeListFooter.nibInstance
-        jokeListTableView.setTableFooter(footer: tableFooter, height: 191)
+        tableFooter = {{name|capitalized}}Footer.nibInstance
+        {{name|decapitalized}}TableView.setTableFooter(footer: tableFooter, height: 191)
 
         // I needed to disable animations because when user selected the Profile tab, the table header was shown animated
         UIView.setAnimationsEnabled(false)

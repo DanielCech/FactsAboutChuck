@@ -1,0 +1,24 @@
+//
+//  {{fileName}}
+//  {{projectName}}
+//
+//  Created by {{author}} on {{date}}.
+//  {{copyright}}
+//
+
+import UIKit
+
+enum {{name|capitalized}}ItemType: String, Codable, CaseIterable {
+    case personalInformation
+    case emailAddress
+    case password
+    case subscription
+    case family{{name|capitalized}}
+    case notifications
+    case darkMode
+    case aboutHarbor
+    case referFriends
+    case reportBug
+    case help
+    case termsAndConditions
+}

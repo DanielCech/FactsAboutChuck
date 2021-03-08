@@ -18,7 +18,7 @@
         <!--Item-->
         <scene sceneID="T4r-JI-9Pv">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="JmO-xe-2y7" customClass="JokeListViewController" customModule="Harbor_STG" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="JmO-xe-2y7" customClass="{{name|capitalized}}ViewController" customModule="Harbor_STG" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7gN-ag-HZR">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -70,7 +70,7 @@
                     <tabBarItem key="tabBarItem" title="Item" image="dashboardTabBarIconGrayed" selectedImage="dashboardTabBarIconSelected" id="c12-uN-0SK"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="jokeListTableView" destination="YXc-0P-bSo" id="fBh-1Y-ed7"/>
+                        <outlet property="{{name|decapitalized}}TableView" destination="YXc-0P-bSo" id="fBh-1Y-ed7"/>
                         <outlet property="fakeNavbar" destination="8l5-ag-Rzg" id="DTJ-La-fAZ"/>
                         <outlet property="fakeNavbarTitleLabel" destination="dpH-88-tJj" id="Fo4-Rh-Kkl"/>
                         <outlet property="fakeNavbarTopConstraint" destination="ZD2-Va-hgv" id="SNW-iD-qBo"/>

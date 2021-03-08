@@ -1,18 +1,18 @@
 //
-//  JokeListViewModel.swift
-//  FactsAboutChuck
+//  {{fileName}}
+//  {{projectName}}
 //
-//  Created by Dan Cech on 08/03/2021.
-//  Copyright � 2021 STRV. All rights reserved.
+//  Created by {{author}} on {{date}}.
+//  {{copyright}}
 //
 
 import RxCocoa
 import RxDataSources
 import RxSwift
 
-typealias JokeListSectionModel = SectionModel<String?, JokeListSection>
+typealias {{name|capitalized}}SectionModel = SectionModel<String?, {{name|capitalized}}Section>
 
-final class JokeListViewModel: ViewModelType {
+final class {{name|capitalized}}ViewModel: ViewModelType {
     // MARK: Private properties
     private let apiService: AuthenticationFlowServicing
     private let inAppPurchaseManager: InAppPurchaseManaging
@@ -38,50 +38,50 @@ final class JokeListViewModel: ViewModelType {
 
 // MARK: - Input / output transformation
 
-extension JokeListViewModel {
+extension {{name|capitalized}}ViewModel {
     struct Input {
         let viewWillAppear: Observable<Void>
         let logoutButtonTapped: Observable<Void>
     }
 
     struct Output {
-        let jokeListSections: Driver<[JokeListSectionModel]>
+        let {{name|decapitalized}}Sections: Driver<[{{name|capitalized}}SectionModel]>
         let activeSubscription: Driver<Bool>
         let user: Driver<UserAuth?>
     }
 
-    func transform(input: JokeListViewModel.Input) -> JokeListViewModel.Output {
+    func transform(input: {{name|capitalized}}ViewModel.Input) -> {{name|capitalized}}ViewModel.Output {
         let user: Observable<UserAuth?> = input.viewWillAppear
             .map { [weak self] _ in
                 self?.keychainManager.user
             }
 
-        let sections: Observable<[JokeListSectionModel]> = user.map { user in
-            var profile = JokeListSectionModel(
-                model: R.string.localizable.profileJokeListJokeList(),
+        let sections: Observable<[{{name|capitalized}}SectionModel]> = user.map { user in
+            var profile = {{name|capitalized}}SectionModel(
+                model: R.string.localizable.profile{{name|capitalized}}{{name|capitalized}}(),
                 items: [
-                    .jokeListItem(.personalInformation),
-                    // TODO: temporary hidden // .jokeListItem(.subscription),
-                    .jokeListItem(.familyJokeList)
+                    .{{name|decapitalized}}Item(.personalInformation),
+                    // TODO: temporary hidden // .{{name|decapitalized}}Item(.subscription),
+                    .{{name|decapitalized}}Item(.family{{name|capitalized}})
                 ]
             )
             if user?.email != nil {
-                profile.items.insert(.jokeListItem(.password), at: 1)
+                profile.items.insert(.{{name|decapitalized}}Item(.password), at: 1)
             }
             return [profile,
-                    JokeListSectionModel(
-                        model: R.string.localizable.profileJokeListPreferences(),
+                    {{name|capitalized}}SectionModel(
+                        model: R.string.localizable.profile{{name|capitalized}}Preferences(),
                         items: [
-                            .jokeListItem(.notifications)
+                            .{{name|decapitalized}}Item(.notifications)
                         ]
                     ),
-                    JokeListSectionModel(
-                        model: R.string.localizable.profileJokeListAbout(),
+                    {{name|capitalized}}SectionModel(
+                        model: R.string.localizable.profile{{name|capitalized}}About(),
                         items: [
-                            .jokeListItem(.aboutHarbor),
-                            .jokeListItem(.reportBug),
-                            .jokeListItem(.help),
-                            .jokeListItem(.termsAndConditions)
+                            .{{name|decapitalized}}Item(.aboutHarbor),
+                            .{{name|decapitalized}}Item(.reportBug),
+                            .{{name|decapitalized}}Item(.help),
+                            .{{name|decapitalized}}Item(.termsAndConditions)
                         ]
                     )]
         }
@@ -102,7 +102,7 @@ extension JokeListViewModel {
         let activeSubscription = inAppPurchaseManager.activeSubscription
 
         return Output(
-            jokeListSections: sections.asDriverOnErrorJustComplete(),
+            {{name|decapitalized}}Sections: sections.asDriverOnErrorJustComplete(),
             activeSubscription: Driver.just(activeSubscription),
             user: user.asDriverOnErrorJustComplete()
         )
