@@ -1,0 +1,20 @@
+//
+//  {{fileName}}
+//  {{projectName}}
+//
+//  Created by {{author}} on {{date}}.
+//  {{copyright}}
+//
+
+import Foundation
+import Swinject
+
+{% for controller in coordinatorControllers %}
+// MARK: - {{controller|capitalized}}ViewEventHandling
+extension {{name|capitalized}}Coordinator: {{controller|capitalized}}ViewEventHandling {
+    func handle(event _: {{controller|capitalized}}ViewEvent) {
+        // TODO: Handle event
+    }
+}
+
+{% endfor %}

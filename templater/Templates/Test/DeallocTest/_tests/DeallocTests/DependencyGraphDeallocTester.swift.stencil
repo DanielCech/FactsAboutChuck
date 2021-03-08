@@ -1,13 +1,13 @@
 //
-//  DependencyGraphDeallocTester.swift
-//  FactsAboutChuck
+//  {{fileName}}
+//  {{projectName}}
 //
-//  Created by Dan Cech on 08/03/2021.
-//  Copyright � 2021 STRV. All rights reserved.
+//  Created by {{author}} on {{date}}.
+//  {{copyright}}
 //
 
 import DeallocTests
-@testable import FactsAboutChuck
+@testable import {{projectName}}
 import Foundation
 import Swinject
 
@@ -18,10 +18,11 @@ class DependencyGraphDeallocTester: DeallocTester {
 
         deallocTests = [
             // Services & Managers
-
+            {% for component in components %}
             DeallocTest(
-                objectCreation: { $0.forceResolve(APIManaging.self) }
+                objectCreation: { $0.forceResolve({{component|capitalized}}.self) }
             )
+            {% endfor %}
         ]
 
         let expectation = self.expectation(description: "deallocTest test_dependencyGraph")

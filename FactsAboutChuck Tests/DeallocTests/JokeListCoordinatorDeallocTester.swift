@@ -1,45 +1,41 @@
 //
-//  SpecificCoordinatorDeallocTester.swift
-//  FactsAboutChuck
+//  JokeListCoordinatorDeallocTester.swift
+//  Minted Tests
 //
 //  Created by Daniel Cech on 12/10/2020.
 //  Copyright © 2020 STRV. All rights reserved.
 //
 
 import DeallocTests
-@testable import FactsAboutChuck
 import Foundation
+@testable import Minted
 import Swinject
 
-/// Testing ViewControllers and ViewModels related to SpecificCoordinator
-class SpecificCoordinatorDeallocTester: DeallocTester {
-    var authenticationCoordinator: SpecificCoordinator? {
+class JokeListCoordinatorDeallocTester: DeallocTester {
+    var jokeListCoordinator: JokeListCoordinator? {
         applyAssembliesToContainer()
 
-        return SpecificCoordinator(assembler: assembler, parent: nil)
+        return JokeListCoordinator(assembler: assembler, parent: nil)
     }
 
-    func test_specificCoordinatorDealloc() {
+    func test_jokeListCoordinatorDealloc() {
         presentingController = showPresentingController()
 
         deallocTests = [
-            // Test ViewControllers
-            DeallocTest(
-                objectCreation: { [weak self] _ in
-                    self?.authenticationCoordinator?.makeSpecificViewController()
-                }
+            DeallocTest(objectCreation: { [weak self] _ in
+                self?.jokeListCoordinator?.makeJokeListViewController()
+            }
             ),
 
-            // Test ViewCoordinator
             DeallocTest(
                 // swiftlint:disable:next unowned_variable_capture
                 objectCreation: { [unowned self] _ in
-                    SpecificCoordinator(assembler: self.assembler, parent: nil)
+                    JokeListCoordinator(assembler: self.assembler, parent: nil)
                 }
             )
         ]
 
-        let expectation = self.expectation(description: "deallocTest test_specificCoordinatorDealloc")
+        let expectation = self.expectation(description: "test_jokeListCoordinatorDealloc")
 
         performDeallocTest(
             deallocTests: deallocTests,

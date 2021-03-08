@@ -31,28 +31,3 @@ extension {{name|capitalized}}Coordinator: ViewControllerCoordinator {
         )
     }
 }
-
-// MARK: - Factories
-extension {{name|capitalized}}Coordinator {
-{% for controller in coordinatorControllers %}
-    func make{{controller|capitalized}}Controller() -> {{controller|capitalized}}ViewController {
-        let viewController = R.storyboard.{{controller|decapitalized}}ViewController.instantiateInitialViewController(
-            viewModel: resolve({{controller|capitalized}}ViewModel.self)
-        )
-
-        viewController.coordinator = self
-
-        return viewController
-    }
-{% endfor %}
-}
-
-{% for controller in coordinatorControllers %}
-// MARK: - {{controller|capitalized}}ViewEventHandling
-extension {{name|capitalized}}Coordinator: {{controller|capitalized}}ViewEventHandling {
-    func handle(event _: {{controller|capitalized}}ViewEvent) {
-        // TODO: Handle event
-    }
-}
-
-{% endfor %}

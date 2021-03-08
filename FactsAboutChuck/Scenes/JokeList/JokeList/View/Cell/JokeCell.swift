@@ -9,7 +9,10 @@
 import RxDataSources
 import UIKit
 
-class JokeCell: UITableViewCell {
+class JokeCell: UITableViewCell, NibLoadableView {
+    @IBOutlet private var numberLabel: UILabel!
+    @IBOutlet private var jokeLabel: UILabel!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -19,5 +22,10 @@ class JokeCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+
+    func setup(with joke: Joke) {
+        numberLabel.text = String(joke.id)
+        jokeLabel.text = joke.joke
     }
 }

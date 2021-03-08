@@ -1,21 +1,17 @@
 //
 //  DeallocTestConformances.swift
-//  DeallocTestsAppTests
+//  FactsAboutChuck
 //
-//  Created by Daniel Cech on 01/05/2020.
-//  Copyright © 2020 STRV. All rights reserved.
+//  Created by Dan Cech on 08/03/2021.
+//  Copyright � 2021 STRV. All rights reserved.
 //
 
 import DeallocTests
 @testable import FactsAboutChuck
 import Foundation
 
-// MARK: - View Controllers
+extension JokeListCoordinator: DeallocTestable {}
 
-// SpecificCoordinator
-extension SpecificCoordinator: DeallocTestable {}
-extension SpecificViewController: DeallocTestable {}
-extension SpecificViewModel: DeallocTestable {}
+extension JokeListViewModel: DeallocTestable {}
 
-// MARK: - Services & Managers
-extension APIManager: DeallocTestable {}
+extension JokeListViewController: DeallocTestable {}

@@ -10,7 +10,7 @@ import RxCocoa
 import RxDataSources
 import RxSwift
 
-struct JokeListViewModel: ViewModelType {
+final class JokeListViewModel: ViewModelType {
     struct Input {}
 
     struct Output {

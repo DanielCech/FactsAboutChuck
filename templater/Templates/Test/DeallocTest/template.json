@@ -12,6 +12,11 @@
       "name": "controllers",
       "type": "stringArray",
       "description": "A space-separated list of view controllers without -ViewController suffix"
+    },
+    {
+      "name": "components",
+      "type": "stringArray",
+      "description": "A space-separated list of entitines that needs to be tested and that are not related to particular view coordinator. It can be managers, services, ... Please use protocol reference like APIServicing instead of APIService where applicable."
     }
   ],
   "validationContext": {}

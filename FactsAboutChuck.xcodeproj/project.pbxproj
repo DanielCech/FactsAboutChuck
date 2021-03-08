@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2724B3AA2571530D0094F084 /* SpecificCoordinatorDeallocTester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2724B3A42571530D0094F084 /* SpecificCoordinatorDeallocTester.swift */; };
 		2724B3AB2571530D0094F084 /* DeallocTestConformances.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2724B3A52571530D0094F084 /* DeallocTestConformances.swift */; };
 		2724B3AC2571530D0094F084 /* DependencyGraphDeallocTester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2724B3A62571530D0094F084 /* DependencyGraphDeallocTester.swift */; };
 		272D8247251CDCAC002A380E /* Rswift+ViewModeled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272D8238251CDCAC002A380E /* Rswift+ViewModeled.swift */; };
@@ -62,6 +61,7 @@
 		27FAC4632479D452002F2A33 /* LoadingAndRefreshConfiguring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FAC42D2479D452002F2A33 /* LoadingAndRefreshConfiguring.swift */; };
 		27FAC4652479D452002F2A33 /* StoryboardInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FAC42F2479D452002F2A33 /* StoryboardInit.swift */; };
 		2F240E6E21B185FA00E93D36 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F240E6D21B185FA00E93D36 /* R.generated.swift */; };
+		37195B0B25F61093006C3CAC /* JokeListCoordinatorDeallocTester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37195B0A25F61092006C3CAC /* JokeListCoordinatorDeallocTester.swift */; };
 		37300AA225F594B200F4626E /* JokeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37300AA025F594B200F4626E /* JokeCell.swift */; };
 		37300AA325F594B200F4626E /* JokeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37300AA125F594B200F4626E /* JokeCell.xib */; };
 		37300AA925F596BD00F4626E /* ReuseIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37300AA825F596BD00F4626E /* ReuseIdentifiable.swift */; };
@@ -72,7 +72,6 @@
 		37F6520F25F44FD7004E82F3 /* JokeListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F6520725F44FD7004E82F3 /* JokeListCoordinator.swift */; };
 		37F6521025F44FD7004E82F3 /* JokeListCoordinatorEventHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F6520825F44FD7004E82F3 /* JokeListCoordinatorEventHandling.swift */; };
 		37F6521125F44FD7004E82F3 /* JokeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F6520925F44FD7004E82F3 /* JokeListViewController.swift */; };
-		37F6521225F44FD7004E82F3 /* JokeListSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F6520B25F44FD7004E82F3 /* JokeListSection.swift */; };
 		37F6521325F44FD7004E82F3 /* JokeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F6520C25F44FD7004E82F3 /* JokeListViewModel.swift */; };
 		37F6521425F44FD7004E82F3 /* JokeListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37F6520D25F44FD7004E82F3 /* JokeListViewController.storyboard */; };
 		756043300B384236749A0F8A /* Pods_defaults_FactsAboutChuck.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33454648722DD949C227FA4E /* Pods_defaults_FactsAboutChuck.framework */; };
@@ -93,7 +92,6 @@
 
 /* Begin PBXFileReference section */
 		2688E18EB43D5213F3EB3690 /* Pods-defaults-STRV-template Tests.staging - release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-defaults-STRV-template Tests.staging - release.xcconfig"; path = "Target Support Files/Pods-defaults-STRV-template Tests/Pods-defaults-STRV-template Tests.staging - release.xcconfig"; sourceTree = "<group>"; };
-		2724B3A42571530D0094F084 /* SpecificCoordinatorDeallocTester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecificCoordinatorDeallocTester.swift; sourceTree = "<group>"; };
 		2724B3A52571530D0094F084 /* DeallocTestConformances.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeallocTestConformances.swift; sourceTree = "<group>"; };
 		2724B3A62571530D0094F084 /* DependencyGraphDeallocTester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DependencyGraphDeallocTester.swift; sourceTree = "<group>"; };
 		272D8238251CDCAC002A380E /* Rswift+ViewModeled.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Rswift+ViewModeled.swift"; sourceTree = "<group>"; };
@@ -155,6 +153,7 @@
 		33454648722DD949C227FA4E /* Pods_defaults_FactsAboutChuck.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_defaults_FactsAboutChuck.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		35D1E7D46B9023C97B2DE449 /* Pods-defaults-FactsAboutChuck Tests.development - release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-defaults-FactsAboutChuck Tests.development - release.xcconfig"; path = "Target Support Files/Pods-defaults-FactsAboutChuck Tests/Pods-defaults-FactsAboutChuck Tests.development - release.xcconfig"; sourceTree = "<group>"; };
 		36FA82697029EBA655B6C768 /* Pods-defaults-FactsAboutChuck.development - release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-defaults-FactsAboutChuck.development - release.xcconfig"; path = "Target Support Files/Pods-defaults-FactsAboutChuck/Pods-defaults-FactsAboutChuck.development - release.xcconfig"; sourceTree = "<group>"; };
+		37195B0A25F61092006C3CAC /* JokeListCoordinatorDeallocTester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JokeListCoordinatorDeallocTester.swift; sourceTree = "<group>"; };
 		37300AA025F594B200F4626E /* JokeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeCell.swift; sourceTree = "<group>"; };
 		37300AA125F594B200F4626E /* JokeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JokeCell.xib; sourceTree = "<group>"; };
 		37300AA825F596BD00F4626E /* ReuseIdentifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseIdentifiable.swift; sourceTree = "<group>"; };
@@ -165,7 +164,6 @@
 		37F6520725F44FD7004E82F3 /* JokeListCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JokeListCoordinator.swift; sourceTree = "<group>"; };
 		37F6520825F44FD7004E82F3 /* JokeListCoordinatorEventHandling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JokeListCoordinatorEventHandling.swift; sourceTree = "<group>"; };
 		37F6520925F44FD7004E82F3 /* JokeListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JokeListViewController.swift; sourceTree = "<group>"; };
-		37F6520B25F44FD7004E82F3 /* JokeListSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JokeListSection.swift; sourceTree = "<group>"; };
 		37F6520C25F44FD7004E82F3 /* JokeListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JokeListViewModel.swift; sourceTree = "<group>"; };
 		37F6520D25F44FD7004E82F3 /* JokeListViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = JokeListViewController.storyboard; sourceTree = "<group>"; };
 		3DC59E53B7091DDBF9226F89 /* Pods-defaults-FactsAboutChuck.staging - release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-defaults-FactsAboutChuck.staging - release.xcconfig"; path = "Target Support Files/Pods-defaults-FactsAboutChuck/Pods-defaults-FactsAboutChuck.staging - release.xcconfig"; sourceTree = "<group>"; };
@@ -237,7 +235,7 @@
 		2724B3A32571530D0094F084 /* DeallocTests */ = {
 			isa = PBXGroup;
 			children = (
-				2724B3A42571530D0094F084 /* SpecificCoordinatorDeallocTester.swift */,
+				37195B0A25F61092006C3CAC /* JokeListCoordinatorDeallocTester.swift */,
 				2724B3A52571530D0094F084 /* DeallocTestConformances.swift */,
 				2724B3A62571530D0094F084 /* DependencyGraphDeallocTester.swift */,
 			);
@@ -555,6 +553,18 @@
 			path = "FactsAboutChuck Tests";
 			sourceTree = "<group>";
 		};
+		37195B1225F610B2006C3CAC /* JokeList */ = {
+			isa = PBXGroup;
+			children = (
+				37300A9E25F5946B00F4626E /* View */,
+				37F6520D25F44FD7004E82F3 /* JokeListViewController.storyboard */,
+				37F6520925F44FD7004E82F3 /* JokeListViewController.swift */,
+				37F6520525F44FD7004E82F3 /* JokeListViewEventHandling.swift */,
+				37F6520C25F44FD7004E82F3 /* JokeListViewModel.swift */,
+			);
+			path = JokeList;
+			sourceTree = "<group>";
+		};
 		37300A9E25F5946B00F4626E /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -585,13 +595,8 @@
 		37F6520425F44FD7004E82F3 /* JokeList */ = {
 			isa = PBXGroup;
 			children = (
-				37300A9E25F5946B00F4626E /* View */,
+				37195B1225F610B2006C3CAC /* JokeList */,
 				37F6520625F44FD7004E82F3 /* Coordinator */,
-				37F6520A25F44FD7004E82F3 /* Models */,
-				37F6520D25F44FD7004E82F3 /* JokeListViewController.storyboard */,
-				37F6520925F44FD7004E82F3 /* JokeListViewController.swift */,
-				37F6520525F44FD7004E82F3 /* JokeListViewEventHandling.swift */,
-				37F6520C25F44FD7004E82F3 /* JokeListViewModel.swift */,
 			);
 			path = JokeList;
 			sourceTree = "<group>";
@@ -603,14 +608,6 @@
 				37F6520825F44FD7004E82F3 /* JokeListCoordinatorEventHandling.swift */,
 			);
 			path = Coordinator;
-			sourceTree = "<group>";
-		};
-		37F6520A25F44FD7004E82F3 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				37F6520B25F44FD7004E82F3 /* JokeListSection.swift */,
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		80DDAB1A1607C933FE948655 /* Frameworks */ = {
@@ -902,7 +899,6 @@
 				27FAC44F2479D452002F2A33 /* SpecificModel.swift in Sources */,
 				27FAC43F2479D452002F2A33 /* AppCoordinating.swift in Sources */,
 				27FAC45F2479D452002F2A33 /* ManagerAssembly.swift in Sources */,
-				37F6521225F44FD7004E82F3 /* JokeListSection.swift in Sources */,
 				27FAC4392479D452002F2A33 /* SceneDelegate.swift in Sources */,
 				27FAC45E2479D452002F2A33 /* ViewModelAssembly.swift in Sources */,
 				27E33AA1247B1F330064A437 /* APIManager.swift in Sources */,
@@ -930,9 +926,9 @@
 				272DAC642481760A001E7C3A /* TestAppDelegate.swift in Sources */,
 				2724B3AC2571530D0094F084 /* DependencyGraphDeallocTester.swift in Sources */,
 				272DAC652481760A001E7C3A /* TestSceneDelegate.swift in Sources */,
-				2724B3AA2571530D0094F084 /* SpecificCoordinatorDeallocTester.swift in Sources */,
 				2724B3AB2571530D0094F084 /* DeallocTestConformances.swift in Sources */,
 				272DAC61248175FF001E7C3A /* EnvironmentSetupTests.swift in Sources */,
+				37195B0B25F61093006C3CAC /* JokeListCoordinatorDeallocTester.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

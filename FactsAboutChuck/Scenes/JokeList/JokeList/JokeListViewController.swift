@@ -43,7 +43,7 @@ extension JokeListViewController {
 
         output.items
             .bind(to: tableView.rx.items(cellIdentifier: JokeCell.reuseIdentifier())) { _, item, cell in
-                cell.textLabel?.text = item.joke
+                (cell as? JokeCell)?.setup(with: item)
             }
             .disposed(by: disposeBag)
     }
@@ -59,6 +59,7 @@ extension JokeListViewController {
         view.addSubview(tableView)
 
         tableView.register(JokeCell.self, forCellReuseIdentifier: JokeCell.reuseIdentifier())
+//        tableView.register
         tableView.tableFooterView = UIView()
     }
 }
