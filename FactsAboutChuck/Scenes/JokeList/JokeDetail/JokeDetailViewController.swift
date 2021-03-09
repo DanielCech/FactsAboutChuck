@@ -25,7 +25,7 @@ class JokeDetailViewController: UIViewController, ViewModelContaining {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        bindToViewModel()
     }
 
     func bindToViewModel() {
