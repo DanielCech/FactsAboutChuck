@@ -1,0 +1,45 @@
+//
+//  {{fileName}}
+//  {{projectName}}
+//
+//  Created by {{author}} on {{date}}.
+//  {{copyright}}
+//
+
+import Foundation
+import Swinject
+
+final class {{name|capitalized}}Coordinator: TabBarControllerCoordinator {
+    var parent: {{name|capitalized}}CoordinatorEventHandling?
+    var childCoordinators = [Coordinator]()
+
+    let assembler: Assembler
+
+    lazy var rootViewController: UIViewController = {
+        // DO NOT FORGET TO ADD VIEW MODEL TO `ViewModelAssembly.swift`
+        let viewController = R.storyboard.specificViewController.instantiateInitialViewController(
+            viewModel: resolve({{name|capitalized}}ViewModel.self)
+        )
+
+        viewController.coordinator = self
+
+        return viewController
+    }()
+
+    init(assembler: Assembler, parent: {{name|capitalized}}CoordinatorEventHandling?) {
+        self.assembler = assembler
+        self.parent = parent
+    }
+}
+
+// MARK: - ViewControllerCoordinator
+extension {{name|capitalized}}Coordinator: ViewControllerCoordinator {
+    func start() {}
+}
+
+// MARK: - {{name|capitalized}}ViewEventHandling
+extension {{name|capitalized}}Coordinator: {{name|capitalized}}ViewEventHandling {
+    func handle(event _: {{name|capitalized}}ViewEvent) {
+        // TODO: Handle event
+    }
+}

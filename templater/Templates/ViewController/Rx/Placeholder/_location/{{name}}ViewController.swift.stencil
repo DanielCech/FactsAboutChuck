@@ -1,0 +1,34 @@
+//
+//  {{fileName}}
+//  {{projectName}}
+//
+//  Created by {{author}} on {{date}}.
+//  {{copyright}}
+//
+
+import RxCocoa
+import RxSwift
+import UIKit
+
+class {{name|capitalized}}ViewController: UIViewController, ViewModelContaining {
+    @IBOutlet private var titleLabel: UILabel!
+
+    // MARK: Public Properties
+
+    // swiftlint:disable implicitly_unwrapped_optional
+    weak var coordinator: {{name|capitalized}}ViewEventHandling!
+    var viewModel: {{name|capitalized}}ViewModel!
+    // swiftlint:enable implicitly_unwrapped_optional
+
+    var disposeBag = DisposeBag()
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        bindToViewModel()
+    }
+
+    func bindToViewModel() {
+        titleLabel.text = viewModel.joke.joke
+    }
+}

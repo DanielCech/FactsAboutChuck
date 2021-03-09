@@ -1,0 +1,38 @@
+{
+  "description": "ViewController with support of collection view using RxDataSources - animatable data source",
+  "status": "draft",
+  "derivedFrom": null,
+  "parameters": [
+      {
+        "name": "name",
+        "type": "string",
+        "description": "A name of generated without suffix -ViewController"
+      },
+      {
+        "name": "viewControllerSuperclass",
+        "type": "string",
+        "defaultValue": "UIViewController",
+        "description": "A superclass of generated view controller without suffix -ViewController"
+      },
+      {
+        "name": "inputFields",
+        "type": "stringArray",
+        "defaultValue": ["email", "password"],
+        "description": "List of input field names"
+      },
+      {
+        "name": "apiEndpoint",
+        "type": "string",
+        "defaultValue": "endpoint",
+        "description": "Endpoint for API communication"
+      },
+      {
+        "name": "primaryAction",
+        "type": "string",
+        "defaultValue": "login",
+        "description": "The name of primary action"
+      }
+    ],
+  "validationContext": {},
+  "dependencies": ["ViewModel/Rx/CollectionView-Animatable-Minted"]
+}

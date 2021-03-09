@@ -1,0 +1,15 @@
+{
+  "description": "View model with support of form table view",
+  "status": "draft",
+  "derivedFrom": null,
+  "parameters": [
+    {
+      "name": "apiService",
+      "type": "string",
+      "defaultValue": "Api",
+      "description": "API Service class providing the API for this ViewModel without -Service suffix"
+    }
+  ],
+  "validationContext": {},
+  "dependencies": ["Protocol/ViewModelType", "DependencyInjection/ViewModelAssembly"]
+}

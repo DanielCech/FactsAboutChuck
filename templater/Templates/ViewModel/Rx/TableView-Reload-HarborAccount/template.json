@@ -1,0 +1,7 @@
+{
+  "description": "",
+  "status": "draft",
+  "derivedFrom": null,
+  "validationContext": {},
+  "dependencies": ["Protocol/ViewModelType", "DependencyInjection/ViewModelAssembly"]
+}

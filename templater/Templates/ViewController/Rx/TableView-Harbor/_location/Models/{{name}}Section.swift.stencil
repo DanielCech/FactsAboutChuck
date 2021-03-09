@@ -1,0 +1,15 @@
+//
+//  {{fileName}}
+//  {{projectName}}
+//
+//  Created by {{author}} on {{date}}.
+//  {{copyright}}
+//
+
+// MARK: - {{name}} table view cell types
+
+enum {{name}}Section {
+{% for cell in tableViewCells %}
+      case {{cell}}
+{% endfor %}
+}

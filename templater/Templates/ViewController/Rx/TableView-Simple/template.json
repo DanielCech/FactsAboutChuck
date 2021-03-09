@@ -1,0 +1,25 @@
+{
+  "description": "ViewController with simple table view without sections driven by RxDataSources",
+  "status": "draft",
+  "derivedFrom": null,
+  "parameters": [
+    {
+      "name": "name",
+      "type": "string",
+      "description": "A name of generated controller without suffix -ViewController"
+    },
+    {
+      "name": "viewControllerSuperclass",
+      "type": "string",
+      "defaultValue": "UIViewController",
+      "description": "A superclass of generated view controller without suffix -ViewController"
+    },
+    {
+      "name": "cellClass",
+      "type": "string",
+      "description": "A name of class of table view cell"
+    }
+  ],
+  "validationContext": {},
+  "dependencies": ["ViewModel/Rx/TableView-Simple"]
+}

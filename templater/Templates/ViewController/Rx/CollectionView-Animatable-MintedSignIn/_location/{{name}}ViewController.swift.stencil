@@ -1,0 +1,229 @@
+//
+//  {{fileName}}
+//  {{projectName}}
+//
+//  Created by {{author}} on {{date}}.
+//  {{copyright}}
+//
+
+import RxCocoa
+import RxDataSources
+import RxKeyboard
+import RxSwift
+import UIKit
+
+// swiftlint:disable implicitly_unwrapped_optional
+
+final class {{name|capitalized}}ViewController: {{viewControllerSuperclass|capitalized}}ViewController, ViewModelContaining {
+    // MARK: IBOutlets
+    @IBOutlet private var collectionView: UICollectionView!
+    @IBOutlet private var navigationView: NavigationView!
+
+    // MARK: Public Properties
+
+    weak var coordinator: {{name|capitalized}}ViewEventHandling!
+
+    var viewModel: {{name|capitalized}}ViewModel!
+    var disposeBag = DisposeBag()
+
+    // MARK: Private Properties
+    private lazy var backButton = FancyButton.makeArrowBackButton()
+
+    private var loginButtonTapped = PublishSubject<Void>()
+
+    private lazy var dataSource = makeDataSource()
+
+    // MARK: Lifecycle
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        setupView()
+    }
+
+    func bindToView() {
+        RxKeyboard.instance.visibleHeight
+            .drive(onNext: { [weak self] keyboardVisibleHeight in
+                self?.collectionView.contentInset.bottom = keyboardVisibleHeight
+            })
+            .disposed(by: disposeBag)
+    }
+
+    func bindToViewModel() {
+        let viewWillAppear = rx.viewWillAppear.asObservable()
+
+        let input = {{name|capitalized}}ViewModel.Input(
+            viewWillAppear: viewWillAppear,
+            loginAction: loginButtonTapped
+        )
+
+        let output = viewModel.transform(input: input)
+
+        // CollectionView Layout
+        output.layout
+            .drive(onNext: { [weak self] layout in
+                self?.setCollectionViewLayout(from: layout)
+            })
+            .disposed(by: disposeBag)
+
+        // Data Source
+        output.items
+            .drive(collectionView.rx.items(dataSource: dataSource))
+            .disposed(by: disposeBag)
+
+        output.userDidLogin
+            .drive(onNext: { [weak self] in
+                self?.coordinator.handle(event: .contactsList)
+            })
+            .disposed(by: disposeBag)
+
+        output.errors
+            .debug("errors")
+            .drive(errorBinding)
+            .disposed(by: disposeBag)
+
+        output.activity
+            .debug("activity")
+            .drive(activityIndicatorBinding)
+            .disposed(by: disposeBag)
+    }
+}
+
+// MARK: Private Methods
+
+private extension {{name|capitalized}}ViewController {
+    func setupView() {
+        bindToView()
+        bindToViewModel()
+        bindActions()
+        setupCollectionView()
+        setupArtwork(type: .{{name|decapitalized}})
+
+        navigationView.configure(with: NavigationViewModel(leftItems: [backButton]))
+    }
+}
+
+private extension {{name|capitalized}}ViewController {
+    func bindActions() {
+        backButton.rx.tap
+            .withUnretained(self)
+            .bind(onNext: { viewController, _ in
+                viewController.coordinator.handle(event: .dismiss)
+            })
+            .disposed(by: disposeBag)
+    }
+}
+
+// MARK: - CollectionView Setup
+
+private extension {{name|capitalized}}ViewController {
+    func setupCollectionView() {
+        collectionView.contentInsetAdjustmentBehavior = .never
+        collectionView.clipsToBounds = false
+
+        // Cell's registration
+
+        collectionView.register(TextFieldCollectionViewCell.self)
+        collectionView.register(MainButtonCell.self)
+        collectionView.register(SecondaryButtonCell.self)
+        collectionView.register({{name|capitalized}}FooterCell.self)
+
+        collectionView.register(
+            ScreenTitleHeaderReusableView.self,
+            forSupplementaryViewOfKind: SupplementaryKind.sectionHeader.rawValue
+        )
+    }
+
+    func makeDataSource() -> RxCollectionViewSectionedAnimatedDataSource<{{name|capitalized}}Section> {
+        RxCollectionViewSectionedAnimatedDataSource<{{name|capitalized}}Section>(
+            configureCell: { [weak self] _, collectionView, indexPath, item in
+                guard let self = self else {
+                    return UICollectionViewCell()
+                }
+
+                switch item {
+                case let .textField(configuration):
+                    let cell: TextFieldCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
+                    let viewModel = TextFieldCollectionViewModel(configuration: configuration)
+                    cell.configure(with: viewModel)
+                    return cell
+
+                case let .mainButton(configuration):
+                    let cell: MainButtonCell = collectionView.dequeueReusableCell(for: indexPath)
+                    cell.configure(with: configuration)
+                    cell.rx.buttonTapped
+                        .subscribeNext { _ in
+                            self.loginButtonTapped.on(.next(()))
+                        }
+                        .disposed(by: cell.disposeBag)
+                    return cell
+
+                case let .secondaryButton(configuration):
+                    let cell: SecondaryButtonCell = collectionView.dequeueReusableCell(for: indexPath)
+                    cell.configure(with: configuration)
+                    cell.rx.buttonTapped
+                        .subscribeNext { _ in
+                            self.coordinator.handle(event: .forgotPassword)
+                        }
+                        .disposed(by: cell.disposeBag)
+
+                    return cell
+
+                case .footer:
+                    let cell: {{name|capitalized}}FooterCell = collectionView.dequeueReusableCell(for: indexPath)
+                    return cell
+                }
+            },
+            configureSupplementaryView: { _, collectionView, sectionKind, indexPath in
+
+                switch sectionKind {
+                case SupplementaryKind.sectionHeader.rawValue:
+
+                    let supplementaryView: ScreenTitleHeaderReusableView = collectionView
+                        .dequeueReusableSupplementaryView(
+                            ofKind: SupplementaryKind.sectionHeader.rawValue,
+                            for: indexPath
+                        )
+
+                    let title = Localizables.{{name|decapitalized}}LogIn()
+                    supplementaryView.configure(with: title)
+
+                    return supplementaryView
+
+                default:
+                    return UICollectionReusableView()
+                }
+            }
+        )
+    }
+
+    func setCollectionViewLayout(from sections: [{{name|capitalized}}LayoutSection]) {
+        let configuration = UICollectionViewCompositionalLayoutConfiguration()
+
+        collectionView.collectionViewLayout = UICollectionViewCompositionalLayout(
+            sectionProvider: { sectionIndex, _ -> NSCollectionLayoutSection? in
+                let section = sections[sectionIndex]
+
+                switch section {
+                case .textfield:
+                    let section = TextFieldCollectionViewCell.layoutSection
+                    section.boundarySupplementaryItems = [ScreenTitleHeaderReusableView.layout]
+                    return section
+                case .mainButton:
+                    return MainButtonCell.layoutSection
+                case .secondaryButton:
+                    return SecondaryButtonCell.layoutSection
+                case .footer:
+                    return {{name|capitalized}}FooterCell.layoutSection
+                }
+            },
+            configuration: configuration
+        )
+    }
+}
+
+extension {{name|capitalized}}ViewController: ErrorPromptable, ActivityIndicatorPromptable, ArtworkConfigurable {}
+
+private enum FileConstants {
+    static let interSectionSpacing: CGFloat = 20
+}

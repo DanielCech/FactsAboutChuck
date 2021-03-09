@@ -1,0 +1,40 @@
+{
+  "description": "ViewController with RxDataSources driven table view for form input",
+  "status": "draft",
+  "derivedFrom": null,
+  "parameters": [
+    {
+      "name": "name",
+      "type": "string",
+      "description": "A name of generated controller without suffix -ViewController"
+    },
+    {
+      "name": "viewControllerSuperclass",
+      "type": "string",
+      "defaultValue": "UIViewController",
+      "description": "A superclass of generated view controller without suffix -ViewController"
+    },
+    {
+      "name": "fakeNavbar",
+      "type": "bool",
+      "description": "Use fake navbar: view on top that disappears when table is scrolled down"
+    },
+    {
+      "name": "sectionHeaders",
+      "type": "bool",
+      "description": "Use table section headers"
+    },
+    {
+      "name": "tableViewHeader",
+      "type": "bool",
+      "description": "TableView header for table view"
+    },
+    {
+      "name": "tableViewFooter",
+      "type": "bool",
+      "description": "TableView footer for table view"
+    }
+  ],
+  "validationContext": {},
+  "dependencies": ["ViewModel/Rx/TableView", "Extension/UITableView+HeadersFooters <=> tableViewHeader || tableViewFooter"]
+}

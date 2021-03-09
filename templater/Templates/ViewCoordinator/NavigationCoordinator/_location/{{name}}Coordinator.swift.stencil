@@ -1,0 +1,33 @@
+//
+//  {{fileName}}
+//  {{projectName}}
+//
+//  Created by {{author}} on {{date}}.
+//  {{copyright}}
+//
+
+import Foundation
+import Swinject
+
+final class {{name|capitalized}}Coordinator: NavigationControllerCoordinator {
+    var parent: {{name|capitalized}}CoordinatorEventHandling?
+    var childCoordinators = [Coordinator]()
+    var navigationController: UINavigationController
+
+    let assembler: Assembler
+
+    init(assembler: Assembler, parent: {{name|capitalized}}CoordinatorEventHandling?) {
+        self.assembler = assembler
+        self.parent = parent
+        navigationController = UINavigationController()
+    }
+}
+
+// MARK: - ViewControllerCoordinator
+extension {{name|capitalized}}Coordinator: ViewControllerCoordinator {
+    func start() {
+        navigationController = UINavigationController(
+            rootViewController: make{{name|capitalized}}ViewController()
+        )
+    }
+}

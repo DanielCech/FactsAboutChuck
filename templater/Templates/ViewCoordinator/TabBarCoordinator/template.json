@@ -1,0 +1,14 @@
+{
+  "description": "Simple TabBar coordinator",
+  "status": "draft",
+  "derivedFrom": null,
+  "parameters": [
+    {
+      "name": "name",
+      "type": "string",
+      "description": "A name of coordinator without -Coordinator suffix"
+    }
+  ],
+  "validationContext": {},
+  "dependencies": []
+}

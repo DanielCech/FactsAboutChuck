@@ -1,0 +1,71 @@
+//
+//  {{fileName}}
+//  {{projectName}}
+//
+//  Created by {{author}} on {{date}}.
+//  {{copyright}}
+//
+
+import Foundation
+import RxDataSources
+import RxSwift
+
+// Required for Compositional Layout
+// Enum which will define the Layout Sections
+enum {{name}}LayoutSection: Int, CaseIterable {
+    case textfield
+    case mainButton
+    case secondaryButton
+    case footer
+}
+
+struct {{name}}Section {
+    var header: String
+    var items: [{{name}}Item]
+    var sectionLayout: {{name}}LayoutSection
+}
+
+extension {{name}}Section: AnimatableSectionModelType {
+    typealias Identity = String
+    typealias Item = {{name}}Item
+
+    init(original: {{name}}Section, items: [Item]) {
+        self = original
+        self.items = items
+    }
+    
+    // Should be a unique identifier per Section
+    // in order to animate properly
+    var identity: String {
+        return String(sectionLayout.rawValue)
+    }
+
+    // Return the specific `LayoutSection` per `Section`
+    var layoutSection: {{name}}LayoutSection {
+        sectionLayout
+    }
+}
+
+enum {{name}}Item: IdentifiableType, Equatable {
+    
+    case textField(TextFieldCellConfiguration)
+    case mainButton(ButtonCellConfiguration)
+    case secondaryButton(ButtonCellConfiguration)
+    case footer
+    
+    // Should be a unique identifier per item
+    // in order to animate properly
+    var identity: String {
+        switch self {
+        case let .textField(configuration):
+            return configuration.title + configuration.placeholder + configuration.validationStatus.value.description
+        case let .mainButton(configuration):
+            return configuration.buttonTitle
+        case let .secondaryButton(configuration):
+            return configuration.buttonTitle
+        case .footer:
+            return "footer"
+        }
+    }
+    
+}

@@ -1,0 +1,21 @@
+//
+//  {{fileName}}
+//  {{projectName}}
+//
+//  Created by {{author}} on {{date}}.
+//  {{copyright}}
+//
+
+import DeallocTests
+import Foundation
+@testable import {{projectName|capitalized}}
+import RxCocoa
+import RxSwift
+
+// TODO: Definition of default values for custom types here
+
+// extension Country: DefaultInitializable {
+//     public static var defaultValue: Country {
+//         Country(code: .defaultValue, name: .defaultValue)
+//     }
+// }

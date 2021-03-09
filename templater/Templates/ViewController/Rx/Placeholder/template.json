@@ -1,0 +1,14 @@
+{
+  "description": "",
+  "status": "draft",
+  "derivedFrom": null,
+  "validationContext": {},
+  "dependencies": ["ViewModel/Rx/Placeholder"],
+  "parameters": [
+    {
+      "name": "name",
+      "type": "string",
+      "description": "A name of generated without suffix -ViewController"
+    }
+  ]
+}

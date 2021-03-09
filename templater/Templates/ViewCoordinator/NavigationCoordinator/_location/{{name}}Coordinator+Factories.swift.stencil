@@ -1,0 +1,26 @@
+//
+//  {{fileName}}
+//  {{projectName}}
+//
+//  Created by {{author}} on {{date}}.
+//  {{copyright}}
+//
+
+import Foundation
+import Swinject
+
+// MARK: - Factories
+extension {{name|capitalized}}Coordinator {
+{% for controller in coordinatorControllers %}
+    func make{{controller|capitalized}}ViewController() -> {{controller|capitalized}}ViewController {
+        let viewController = R.storyboard.{{controller|decapitalized}}ViewController.instantiateInitialViewController(
+            viewModel: resolve({{controller|capitalized}}ViewModel.self)
+        )
+
+        viewController.coordinator = self
+
+        return viewController
+    }
+
+{% endfor %}
+}

@@ -1,0 +1,20 @@
+{
+  "description": "ViewController with support of collection view using RxDataSources",
+  "status": "draft",
+  "derivedFrom": null,
+  "parameters": [
+      {
+        "name": "name",
+        "type": "string",
+        "description": "A name of generated item without suffix -ViewController"
+      },
+      {
+        "name": "viewControllerSuperclass",
+        "type": "string",
+        "defaultValue": "UIViewController",
+        "description": "A superclass of generated view controller without suffix -ViewController"
+      }
+    ],
+  "validationContext": {},
+  "dependencies": ["ViewModel/Rx/CollectionView"]
+}

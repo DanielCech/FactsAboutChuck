@@ -1,0 +1,54 @@
+//
+//  {{fileName}}
+//  {{projectName}}
+//
+//  Created by {{author}} on {{date}}.
+//  {{copyright}}
+//
+
+import RxCocoa
+import RxDataSources
+import RxSwift
+
+typealias {{name|capitalized}}SectionModel = SectionModel<String?, {{name|capitalized}}Section>
+
+final class {{name|capitalized}}ViewModel: ViewModelType {
+    // MARK: Private properties
+    private let disposeBag = DisposeBag()
+
+    // MARK: Lifecycle
+
+    deinit {
+        print("Deinit \(self)")
+    }
+
+    init() {}
+}
+
+// MARK: - Input / output transformation
+
+extension {{name|capitalized}}ViewModel {
+    struct Input {
+        let viewWillAppear: Observable<Void>
+    }
+
+    struct Output {
+        let sections: Driver<[{{name|capitalized}}SectionModel]>
+    }
+
+    func transform(input: {{name|capitalized}}ViewModel.Input) -> {{name|capitalized}}ViewModel.Output {
+        let sections: Observable<[{{name|capitalized}}SectionModel]> = input.viewWillAppear
+            .map { _ in
+                [
+                    {{name|capitalized}}SectionModel(
+                        model: "",
+                        items: []  // TODO: add items here
+                    )
+                        ]
+        }
+
+        return Output(
+            sections: sections.asDriverOnErrorJustComplete()
+        )
+    }
+}

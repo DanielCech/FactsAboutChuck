@@ -1,0 +1,33 @@
+//
+//  {{fileName}}
+//  {{projectName}}
+//
+//  Created by {{author}} on {{date}}.
+//  {{copyright}}
+//
+
+import UIKit
+
+extension {{name|capitalized}}FooterCell {
+    static var layoutSection: NSCollectionLayoutSection {
+        let layoutSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(FileConstants.widthMultiplier),
+            heightDimension: .absolute(FileConstants.height)
+        )
+
+        let item = NSCollectionLayoutItem(layoutSize: layoutSize)
+
+        let group = NSCollectionLayoutGroup.vertical(
+            layoutSize: layoutSize,
+            subitems: [item]
+        )
+        let section = NSCollectionLayoutSection(group: group)
+
+        return section
+    }
+}
+
+private enum FileConstants {
+    static let widthMultiplier: CGFloat = 1.0
+    static let height: CGFloat = 244
+}

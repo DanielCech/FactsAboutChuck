@@ -1,0 +1,37 @@
+//
+//  {{fileName}}
+//  {{projectName}}
+//
+//  Created by {{author}} on {{date}}.
+//  {{copyright}}
+//
+
+import RxCocoa
+import RxSwift
+import RxSwiftExt
+
+{% if viewModelSuperclass %}
+final class {{name|capitalized}}ViewModel: {{viewModelSuperclass}}, ViewModelType {
+{% else %}
+final class {{name|capitalized}}ViewModel: ViewModelType {
+{% endif %}
+    struct Input {
+        let viewWillAppear: Observable<Void>
+    }
+
+    struct Output {
+        let errors: Driver<Error>
+    }
+
+    let apiService: {{apiService|capitalized}}Servicing
+
+    init(apiService: {{apiService|capitalized}}Servicing) {
+        self.apiService = apiService
+    }
+
+    func transform(input: {{name|capitalized}}ViewModel.Input) -> {{name|capitalized}}ViewModel.Output {
+        let errors = Observable<Error>.empty().asDriverOnErrorJustComplete()
+
+        return Output(errors: errors)
+    }
+}

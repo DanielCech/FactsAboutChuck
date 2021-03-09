@@ -1,0 +1,21 @@
+{
+  "description": "ViewModel with RxDataSources driven collection view",
+  "status": "draft",
+  "derivedFrom": null,
+  "parameters": [
+    {
+      "name": "apiService",
+      "type": "string",
+      "defaultValue": "Api",
+      "description": "API Service class providing the API for this ViewModel without -Service suffix"
+    },
+    {
+      "name": "errorType",
+      "type": "string",
+      "defaultValue": "Error",
+      "description": "Error type used for error handling"
+    }
+  ],
+  "validationContext": {},
+  "dependencies": ["Protocol/ViewModelType", "DependencyInjection/ViewModelAssembly"]
+}

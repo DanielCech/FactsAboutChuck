@@ -1,0 +1,15 @@
+//
+//  {{fileName}}
+//  {{projectName}}
+//
+//  Created by {{author}} on {{date}}.
+//  {{copyright}}
+//
+
+import Foundation
+
+enum {{name|capitalized}}CoordinatorEvent {}
+
+protocol {{name|capitalized}}CoordinatorEventHandling {
+    func handle(event: {{name|capitalized}}CoordinatorEvent)
+}

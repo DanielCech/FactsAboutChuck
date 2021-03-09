@@ -1,0 +1,47 @@
+//
+//  {{fileName}}
+//  {{projectName}}
+//
+//  Created by {{author}} on {{date}}.
+//  {{copyright}}
+//
+
+import DeallocTests
+@testable import {{projectName}}
+import Foundation
+import Swinject
+
+/// Dependency graph test - every type that is not connected to a coordinator goes here
+class DependencyGraphDeallocTester: DeallocTester {
+    func test_dependencyGraphDealloc() {
+        applyAssembliesToContainer()
+
+        deallocTests = [
+            // Services & Managers
+            {% for component in components %}
+            DeallocTest(
+                objectCreation: { $0.forceResolve({{component|capitalized}}.self) }
+            )
+            {% endfor %}
+        ]
+
+        let expectation = self.expectation(description: "deallocTest test_dependencyGraph")
+
+        performDeallocTest(
+            deallocTests: deallocTests,
+            expectation: expectation
+        )
+
+        waitForExpectations(timeout: 200, handler: nil)
+    }
+
+    override func applyAssembliesToContainer() {
+        assembler.apply(
+            assemblies: [
+                ManagerAssembly(),
+                ServiceAssembly(),
+                ViewModelAssembly()
+            ]
+        )
+    }
+}

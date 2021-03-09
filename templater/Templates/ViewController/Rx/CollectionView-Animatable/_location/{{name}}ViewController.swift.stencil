@@ -1,0 +1,146 @@
+//
+//  {{fileName}}
+//  {{projectName}}
+//
+//  Created by {{author}} on {{date}}.
+//  {{copyright}}
+//
+
+import RxCocoa
+import RxDataSources
+import RxSwift
+import UIKit
+
+final class {{name|capitalized}}ViewController: MintedViewController, ViewModelContaining {
+    // MARK: IBOutlets
+    @IBOutlet private var collectionView: UICollectionView!
+
+    // MARK: Public Properties
+
+    // swiftlint:disable:next implicitly_unwrapped_optional
+    weak var coordinator: {{name|capitalized}}ViewEventHandling!
+
+    // swiftlint:disable:next implicitly_unwrapped_optional
+    var viewModel: {{name|capitalized}}ViewModel!
+    var disposeBag = DisposeBag()
+
+    // MARK: Private Properties
+    private lazy var dataSource = makeDataSource()
+
+    private let newContactButton = UIBarButtonItem(title: "New Contact", style: .plain, target: nil, action: nil)
+    private let deleteTokenButton = UIBarButtonItem(title: "Logout", style: .plain, target: nil, action: nil)
+
+    // MARK: Lifecycle
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        setupView()
+    }
+
+    func bindToViewModel() {
+        let input = {{name|capitalized}}ViewModel.Input(
+            viewWillAppear: rx.viewWillAppear.asObservable(),
+            newContact: newContactButton.rx.tap.asObservable(),
+            deleteToken: deleteTokenButton.rx.tap.asObservable()
+        )
+
+        let output = viewModel.transform(input: input)
+
+        // CollectionView Layout
+        output.{{name|decapitalized}}Layout
+            .drive(onNext: { [weak self] layout in
+                self?.setCollectionViewLayout(from: layout)
+            })
+            .disposed(by: disposeBag)
+
+        // Data Source
+        output.{{name|decapitalized}}Items
+            .map { items -> [{{name|capitalized}}Section] in
+                items.map { $0 }
+            }
+            .drive(collectionView.rx.items(dataSource: dataSource))
+            .disposed(by: disposeBag)
+
+        // Errors
+        output.errors
+            .drive(onNext: { [weak self] error in
+                guard let self = self else {
+                    return
+                }
+                self.showErrorAlert(title: "Something went wrong", message: error.localizedDescription)
+            })
+            .disposed(by: disposeBag)
+
+        output.tokenDeleted
+            .drive(onNext: { [weak self] _ in
+                self?.coordinator.handle(event: .logout)
+            })
+            .disposed(by: disposeBag)
+
+        output.activity
+            .drive(activityIndicatorBinding)
+            .disposed(by: disposeBag)
+    }
+}
+
+// MARK: Private Methods
+
+private extension {{name|capitalized}}ViewController {
+    func setupView() {
+        bindToViewModel()
+        setupCollectionView()
+
+        navigationItem.leftBarButtonItem = deleteTokenButton
+        navigationItem.rightBarButtonItem = newContactButton
+    }
+}
+
+// MARK: - CollectionView Setup
+
+private extension {{name|capitalized}}ViewController {
+    func setupCollectionView() {
+        collectionView.contentInsetAdjustmentBehavior = .never
+        collectionView.clipsToBounds = false
+
+        // Cell's registration
+
+        collectionView.register(ContactCell.self)
+    }
+
+    func makeDataSource() -> RxCollectionViewSectionedAnimatedDataSource<{{name|capitalized}}Section> {
+        RxCollectionViewSectionedAnimatedDataSource(
+            configureCell: { _, collectionView, indexPath, element in
+                switch element {
+                case let .contact(model):
+                    let cell: ContactCell = collectionView.dequeueReusableCell(for: indexPath)
+                    cell.configure(with: model)
+
+                    return cell
+                }
+            }
+        )
+    }
+
+    func setCollectionViewLayout(from sections: [{{name|capitalized}}LayoutSection]) {
+        let configuration = UICollectionViewCompositionalLayoutConfiguration()
+        configuration.interSectionSpacing = FileConstants.interSectionSpacing
+
+        collectionView.collectionViewLayout = UICollectionViewCompositionalLayout(
+            sectionProvider: { sectionIndex, _ -> NSCollectionLayoutSection? in
+                let section = sections[sectionIndex]
+
+                switch section {
+                case .contact:
+                    return ContactCell.layoutSection
+                }
+            }
+        )
+    }
+}
+
+extension {{name|capitalized}}ViewController: ErrorPromptable, ActivityIndicatorPromptable {}
+
+private enum FileConstants {
+    static let interSectionSpacing: CGFloat = 20
+}

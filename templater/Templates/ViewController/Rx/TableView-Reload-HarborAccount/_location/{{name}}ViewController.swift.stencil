@@ -1,0 +1,96 @@
+//
+//  {{fileName}}
+//  {{projectName}}
+//
+//  Created by {{author}} on {{date}}.
+//  {{copyright}}
+//
+
+import RxCocoa
+import RxDataSources
+import RxSwift
+import UIKit
+
+// swiftlint:disable implicitly_unwrapped_optional
+
+final class {{name|capitalized}}ViewController: UIViewController, ViewModelContaining {
+    // MARK: IBOutlets
+    @IBOutlet private var tableView: UITableView!
+
+    // MARK: Public Properties
+    weak var coordinator: {{name|capitalized}}ViewEventHandling!
+
+    var viewModel: {{name|capitalized}}ViewModel!
+    var disposeBag = DisposeBag()
+
+    // MARK: Private Properties
+    private lazy var dataSource = RxTableViewSectionedReloadDataSource<{{name|capitalized}}SectionModel>(configureCell: { _, tableView, indexPath, item -> UITableViewCell in
+        switch item {
+        case let .item(model):
+            let cell: {{cellClass|capitalized}} = tableView.dequeueReusableCell(for: indexPath)
+            cell.setup(with: model)
+            return cell
+        }
+    })
+
+    // MARK: Lifecycle
+
+    deinit {
+        print("Deinit \(self)")
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        setupView()
+    }
+}
+
+// MARK: - Binding
+
+extension {{name|capitalized}}ViewController {
+    func bindToView() {}
+
+    func bindToViewModel() {
+        let viewWillAppear = rx.sentMessage(#selector(UIViewController.viewWillAppear(_:))).mapToVoid()
+
+        let input = {{name|capitalized}}ViewModel.Input(
+            viewWillAppear: viewWillAppear
+        )
+
+        let output = viewModel.transform(input: input)
+        output.sections
+            .drive(tableView.rx.items(dataSource: dataSource))
+            .disposed(by: disposeBag)
+    }
+
+    func bindToCoordinator() {
+        tableView.rx.modelSelected({{name|capitalized}}Section.self)
+            .bind(onNext: { [weak self] _ in
+                // TODO:
+            })
+            .disposed(by: disposeBag)
+    }
+}
+
+// MARK: - Private Methods
+
+private extension {{name|capitalized}}ViewController {
+    func setupView() {
+        setupIBOutlets()
+        bindToView()
+        bindToViewModel()
+        bindToCoordinator()
+
+        title = "{{name|capitalized}}"
+    }
+
+    func setupIBOutlets() {
+        tableView.separatorStyle = .none
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedSectionHeaderHeight = 85
+        tableView.sectionHeaderHeight = UITableView.automaticDimension
+
+        tableView.register({{cellClass|capitalized}}.self)
+    }
+}

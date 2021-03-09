@@ -1,0 +1,66 @@
+//
+//  {{fileName}}
+//  {{projectName}}
+//
+//  Created by {{author}} on {{date}}.
+//  {{copyright}}
+//
+
+import RxDataSources
+import RxSwift
+import UIKit
+
+class {{name|capitalized}}ViewController: UIViewController, ViewModelContaining {
+
+    // MARK: - Outlets
+    @IBOutlet private var tableView: UITableView!
+    
+    // MARK: - Public Properties
+    
+    // swiftlint:disable:next implicitly_unwrapped_optional
+    var viewModel: {{name|capitalized}}ViewModel!
+    weak var coordinator: {{name|capitalized}}ViewEventHandling?
+    let disposeBag = DisposeBag()
+    
+    // MARK: - Lifecycle Methods
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupUI()
+        bindTableView()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        title = "{{name|capitalized}}"
+    }
+    
+    func bindToViewModel() {
+        
+    }
+}
+
+// MARK: - Binding
+extension {{name|capitalized}}ViewController {
+    func bindTableView() {
+        viewModel.items
+            .bind(to: tableView.rx.items(cellIdentifier: {{cellClass|capitalized}}.reuseIdentifier())) { _, title, cell in
+
+                cell.textLabel?.text = title
+        }
+        .disposed(by: disposeBag)
+    }
+}
+
+// MARK: - UI Setup
+extension {{name|capitalized}}ViewController {
+    private func setupUI() {
+        if #available(iOS 13.0, *) {
+            overrideUserInterfaceStyle = .light
+        }
+        view.backgroundColor = .white
+        view.addSubview(tableView)
+        
+        tableView.register({{cellClass|capitalized}}.self, forCellReuseIdentifier: {{cellClass|capitalized}}.reuseIdentifier())
+        tableView.tableFooterView = UIView()
+    }
+}

@@ -1,0 +1,133 @@
+//
+//  {{fileName}}
+//  {{projectName}}
+//
+//  Created by {{author}} on {{date}}.
+//  {{copyright}}
+//
+
+import RxCocoa
+import RxSwift
+import RxSwiftExt
+
+{% if viewModelSuperclass %}
+class {{name|capitalized}}ViewModel: {{viewModelSuperclass}}, ViewModelType {
+{% else %}
+class {{name|capitalized}}ViewModel: ViewModelType {
+{% endif %}
+
+    struct Input {
+        let viewWillAppear: Observable<Void>
+        let newContact: Observable<Void>
+        let deleteToken: Observable<Void>
+    }
+
+    struct Output {
+        let {{name|decapitalized}}Items: Driver<[{{name|capitalized}}Section]>
+        let {{name|decapitalized}}Layout: Driver<[{{name|capitalized}}LayoutSection]>
+        let errors: Driver<{{errorType|capitalized}}>
+        let tokenDeleted: Driver<Void>
+        let activity: Driver<(Bool, String?)>
+    }
+
+    let apiService: ContactsListServicing
+    let credentialManager: CredentialManaging
+
+    init(apiService: ContactsListServicing, credentialManager: CredentialManaging) {
+        self.apiService = apiService
+        self.credentialManager = credentialManager
+    }
+
+    func transform(input: Input) -> Output {
+        // New Contact Requet
+
+        let newContactRequest = input.newContact
+            .show(activity)
+            .map { _ -> Contact in
+                Contact(
+                    name: String(UUID().uuidString.prefix(10)),
+                    mainAddress: "address 1",
+                    secondaryAddress: "address 2",
+                    locality: "Prague",
+                    postalCode: "10000",
+                    country: "CZ",
+                    administrativeArea: "Prague",
+                    notes: "Test contact",
+                    members: [
+                        Individual(
+                            role: .primary,
+                            salutation: .mr,
+                            givenName: "Breno",
+                            familyName: "Valadao",
+                            emails: ["breno.valadao@strv.com"],
+                            phoneNumbers: ["+420 123 456 789"],
+                            occasions: [
+                                Occasion(birthdate: DateFormatter.yyyyMMdd.date(from: "1995-10-23") ?? Date())
+                            ]
+                        )
+                    ]
+                )
+            }
+            .withUnretained(self)
+            .flatMap { viewModel, contact in
+                viewModel.apiService.createNewContact(contact: contact)
+                    .asObservable()
+                    .materialize()
+            }
+            .hide(activity)
+            .share()
+
+        // Get Contacts
+
+        let contactsRequest = Observable.merge(
+            input.viewWillAppear,
+            newContactRequest.elements().mapToVoid()
+        )
+        .show(activity)
+        .withUnretained(self)
+        .flatMap { viewModel, _ in
+            viewModel.apiService.{{name|decapitalized}}()
+                .asObservable()
+                .materialize()
+        }
+        .hide(activity)
+        .share()
+
+        let items = contactsRequest
+            .elements()
+            .map { contacts -> [{{name|capitalized}}Section] in
+                var items = [{{name|capitalized}}Section]()
+
+                let contactItems = contacts.map {
+                    {{name|capitalized}}Item.contact($0.name)
+                }
+                items.append(.contact(contactItems))
+
+                return items
+            }
+
+        let contactLayout = items
+            .map { sections in
+                sections.map(\.layoutSection)
+            }
+
+        // Reset Session Token
+        let tokenDeleted = input.deleteToken
+            .withUnretained(self)
+            .map { _ in
+                self.credentialManager.deleteCredentials()
+            }
+            .asDriverOnErrorJustComplete()
+
+        // Errors
+        let errors = Observable<{{errorType|capitalized}}>.empty().asDriverOnErrorJustComplete()
+
+        return Output(
+            {{name|decapitalized}}Items: items.asDriverOnErrorJustComplete(),
+            {{name|decapitalized}}Layout: contactLayout.asDriverOnErrorJustComplete(),
+            errors: errors,
+            tokenDeleted: tokenDeleted,
+            activity: activity.asDriverOnErrorJustComplete()
+        )
+    }
+}
