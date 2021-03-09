@@ -14,4 +14,8 @@ extension JokeListCoordinator: DeallocTestable {}
 
 extension JokeListViewModel: DeallocTestable {}
 
+extension JokeDetailViewModel: DeallocTestable {}
+
 extension JokeListViewController: DeallocTestable {}
+
+extension JokeDetailViewController: DeallocTestable {}

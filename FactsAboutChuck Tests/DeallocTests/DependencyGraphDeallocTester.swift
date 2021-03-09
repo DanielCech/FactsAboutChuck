@@ -18,10 +18,6 @@ class DependencyGraphDeallocTester: DeallocTester {
 
         deallocTests = [
             // Services & Managers
-
-            DeallocTest(
-                objectCreation: { $0.forceResolve(APIManaging.self) }
-            )
         ]
 
         let expectation = self.expectation(description: "deallocTest test_dependencyGraph")

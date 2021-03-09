@@ -1,14 +1,14 @@
 //
 //  JokeListCoordinatorDeallocTester.swift
-//  Minted Tests
+//  FactsAboutChuck
 //
-//  Created by Daniel Cech on 12/10/2020.
-//  Copyright © 2020 STRV. All rights reserved.
+//  Created by Dan Cech on 09/03/2021.
+//  Copyright � 2021 STRV. All rights reserved.
 //
 
 import DeallocTests
+@testable import FactsAboutChuck
 import Foundation
-@testable import Minted
 import Swinject
 
 class JokeListCoordinatorDeallocTester: DeallocTester {
@@ -24,6 +24,11 @@ class JokeListCoordinatorDeallocTester: DeallocTester {
         deallocTests = [
             DeallocTest(objectCreation: { [weak self] _ in
                 self?.jokeListCoordinator?.makeJokeListViewController()
+            }
+            ),
+
+            DeallocTest(objectCreation: { [weak self] _ in
+                self?.jokeListCoordinator?.makeJokeDetailViewController(joke: .defaultValue)
             }
             ),
 

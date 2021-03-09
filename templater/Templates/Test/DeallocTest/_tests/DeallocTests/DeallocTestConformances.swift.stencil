@@ -8,7 +8,7 @@
 
 import DeallocTests
 import Foundation
-@testable import {{projectName}}
+@testable import {{projectName|capitalized}}
 
 extension {{name|capitalized}}Coordinator: DeallocTestable {}
 

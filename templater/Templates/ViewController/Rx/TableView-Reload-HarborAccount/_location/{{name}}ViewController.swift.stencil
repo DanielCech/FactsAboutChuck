@@ -6,7 +6,6 @@
 //  {{copyright}}
 //
 
-import MessageUI
 import RxCocoa
 import RxDataSources
 import RxSwift
@@ -65,7 +64,6 @@ extension {{name|capitalized}}ViewController {
             .disposed(by: disposeBag)
     }
 
-    // swiftlint:disable:next cyclomatic_complexity
     func bindToCoordinator() {
         tableView.rx.modelSelected({{name|capitalized}}Section.self)
             .bind(onNext: { [weak self] _ in

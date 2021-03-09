@@ -1,14 +1,14 @@
 //
-//  {{name|capitalized}}CoordinatorDeallocTester.swift
-//  Minted Tests
+//  {{fileName}}
+//  {{projectName}}
 //
-//  Created by Daniel Cech on 12/10/2020.
-//  Copyright © 2020 STRV. All rights reserved.
+//  Created by {{author}} on {{date}}.
+//  {{copyright}}
 //
 
 import DeallocTests
 import Foundation
-@testable import Minted
+@testable import  {{projectName|capitalized}}
 import Swinject
 
 class {{name|capitalized}}CoordinatorDeallocTester: DeallocTester {
@@ -23,7 +23,8 @@ class {{name|capitalized}}CoordinatorDeallocTester: DeallocTester {
 
         deallocTests = [
             {% for controller in controllers %}
-            DeallocTest(objectCreation: { [weak self] _ in
+            DeallocTest(
+                objectCreation: { [weak self] _ in
                     self?.{{name|decapitalized}}Coordinator?.make{{controller|capitalized}}ViewController()
                 }
             ),
@@ -45,7 +46,7 @@ class {{name|capitalized}}CoordinatorDeallocTester: DeallocTester {
 
         waitForExpectations(timeout: 200, handler: nil)
     }
-    
+
     override func applyAssembliesToContainer() {
         assembler.apply(
             assemblies: [

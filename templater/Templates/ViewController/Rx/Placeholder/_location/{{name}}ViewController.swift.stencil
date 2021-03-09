@@ -6,23 +6,29 @@
 //  {{copyright}}
 //
 
+import RxCocoa
+import RxSwift
 import UIKit
 
-class {{name|capitalized}}ViewController: UIViewController {
+class {{name|capitalized}}ViewController: UIViewController, ViewModelContaining {
+    @IBOutlet private var titleLabel: UILabel!
+
+    // MARK: Public Properties
+
+    // swiftlint:disable implicitly_unwrapped_optional
+    weak var coordinator: {{name|capitalized}}ViewEventHandling!
+    var viewModel: {{name|capitalized}}ViewModel!
+    // swiftlint:enable implicitly_unwrapped_optional
+
+    var disposeBag = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        bindToViewModel()
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func bindToViewModel() {
+        titleLabel.text = viewModel.joke.joke
     }
-    */
 }

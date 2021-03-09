@@ -13,7 +13,8 @@ import Swinject
 // MARK: - {{controller|capitalized}}ViewEventHandling
 extension {{name|capitalized}}Coordinator: {{controller|capitalized}}ViewEventHandling {
     func handle(event _: {{controller|capitalized}}ViewEvent) {
-        // TODO: Handle event
+        switch event {
+        }
     }
 }
 

@@ -61,6 +61,7 @@
 		27FAC4632479D452002F2A33 /* LoadingAndRefreshConfiguring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FAC42D2479D452002F2A33 /* LoadingAndRefreshConfiguring.swift */; };
 		27FAC4652479D452002F2A33 /* StoryboardInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FAC42F2479D452002F2A33 /* StoryboardInit.swift */; };
 		2F240E6E21B185FA00E93D36 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F240E6D21B185FA00E93D36 /* R.generated.swift */; };
+		370796BC25F7A82600623ABE /* DefaultValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370796BB25F7A82600623ABE /* DefaultValues.swift */; };
 		37195B0B25F61093006C3CAC /* JokeListCoordinatorDeallocTester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37195B0A25F61092006C3CAC /* JokeListCoordinatorDeallocTester.swift */; };
 		37300AA925F596BD00F4626E /* ReuseIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37300AA825F596BD00F4626E /* ReuseIdentifiable.swift */; };
 		37300AB025F5A09000F4626E /* JokesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37300AAF25F5A09000F4626E /* JokesProvider.swift */; };
@@ -160,6 +161,7 @@
 		33454648722DD949C227FA4E /* Pods_defaults_FactsAboutChuck.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_defaults_FactsAboutChuck.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		35D1E7D46B9023C97B2DE449 /* Pods-defaults-FactsAboutChuck Tests.development - release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-defaults-FactsAboutChuck Tests.development - release.xcconfig"; path = "Target Support Files/Pods-defaults-FactsAboutChuck Tests/Pods-defaults-FactsAboutChuck Tests.development - release.xcconfig"; sourceTree = "<group>"; };
 		36FA82697029EBA655B6C768 /* Pods-defaults-FactsAboutChuck.development - release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-defaults-FactsAboutChuck.development - release.xcconfig"; path = "Target Support Files/Pods-defaults-FactsAboutChuck/Pods-defaults-FactsAboutChuck.development - release.xcconfig"; sourceTree = "<group>"; };
+		370796BB25F7A82600623ABE /* DefaultValues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultValues.swift; sourceTree = "<group>"; };
 		37195B0A25F61092006C3CAC /* JokeListCoordinatorDeallocTester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JokeListCoordinatorDeallocTester.swift; sourceTree = "<group>"; };
 		37300AA825F596BD00F4626E /* ReuseIdentifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseIdentifiable.swift; sourceTree = "<group>"; };
 		37300AAF25F5A09000F4626E /* JokesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokesProvider.swift; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 		2724B3A32571530D0094F084 /* DeallocTests */ = {
 			isa = PBXGroup;
 			children = (
+				370796BB25F7A82600623ABE /* DefaultValues.swift */,
 				37195B0A25F61092006C3CAC /* JokeListCoordinatorDeallocTester.swift */,
 				2724B3A52571530D0094F084 /* DeallocTestConformances.swift */,
 				2724B3A62571530D0094F084 /* DependencyGraphDeallocTester.swift */,
@@ -970,6 +973,7 @@
 				272DAC642481760A001E7C3A /* TestAppDelegate.swift in Sources */,
 				2724B3AC2571530D0094F084 /* DependencyGraphDeallocTester.swift in Sources */,
 				272DAC652481760A001E7C3A /* TestSceneDelegate.swift in Sources */,
+				370796BC25F7A82600623ABE /* DefaultValues.swift in Sources */,
 				2724B3AB2571530D0094F084 /* DeallocTestConformances.swift in Sources */,
 				272DAC61248175FF001E7C3A /* EnvironmentSetupTests.swift in Sources */,
 				37195B0B25F61093006C3CAC /* JokeListCoordinatorDeallocTester.swift in Sources */,
