@@ -10,7 +10,7 @@ import Swinject
 
 // swiftlint:disable force_unwrapping
 final class ViewModelAssembly: Assembly {
-    func assemble(container: Container) {
+    func assemble(container _: Container) {
       container.register({{name|capitalized}}ViewModel.self) { resolver in
           {{name|capitalized}}ViewModel()
       }.inObjectScope(.graph)

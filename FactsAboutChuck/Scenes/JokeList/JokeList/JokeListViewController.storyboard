@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="never" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YXc-0P-bSo">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                                 <color key="backgroundColor" name="App Colors/dashboardBackground"/>
                             </tableView>
                         </subviews>
@@ -27,7 +27,7 @@
                         <constraints>
                             <constraint firstItem="YXc-0P-bSo" firstAttribute="leading" secondItem="AoL-UG-IwY" secondAttribute="leading" id="MNA-aa-vzy"/>
                             <constraint firstItem="YXc-0P-bSo" firstAttribute="trailing" secondItem="AoL-UG-IwY" secondAttribute="trailing" id="UWd-vg-d3p"/>
-                            <constraint firstItem="YXc-0P-bSo" firstAttribute="top" secondItem="7gN-ag-HZR" secondAttribute="top" id="hPr-og-R2e"/>
+                            <constraint firstItem="YXc-0P-bSo" firstAttribute="top" secondItem="AoL-UG-IwY" secondAttribute="top" id="hPr-og-R2e"/>
                             <constraint firstItem="YXc-0P-bSo" firstAttribute="bottom" secondItem="AoL-UG-IwY" secondAttribute="bottom" id="sFY-xb-1I7"/>
                         </constraints>
                     </view>

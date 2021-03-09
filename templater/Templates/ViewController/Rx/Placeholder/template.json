@@ -3,18 +3,12 @@
   "status": "draft",
   "derivedFrom": null,
   "validationContext": {},
-  "switches": [],
+  "dependencies": ["ViewModel/Rx/Placeholder"],
   "parameters": [
     {
       "name": "name",
       "type": "string",
       "description": "A name of generated without suffix -ViewController"
-    },
-    {
-      "name": "cellClass",
-      "type": "string",
-      "description": "The class of table view cell"
     }
-  ],
-  "dependencies": ["ViewModel/Rx/TableView-Reload-HarborAccount"]
+  ]
 }

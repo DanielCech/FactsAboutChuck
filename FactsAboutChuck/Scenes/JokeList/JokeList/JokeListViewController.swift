@@ -6,7 +6,6 @@
 //  Copyright � 2021 STRV. All rights reserved.
 //
 
-import MessageUI
 import RxCocoa
 import RxDataSources
 import RxSwift

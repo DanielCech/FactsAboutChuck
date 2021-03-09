@@ -5,6 +5,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -25,8 +26,8 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gCY-kV-SeS">
-                        <rect key="frame" x="36" y="5" width="34" height="28"/>
-                        <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="17"/>
+                        <rect key="frame" x="36" y="5" width="39.5" height="28"/>
+                        <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -36,12 +37,22 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZWb-sA-w5s">
+                        <rect key="frame" x="36" y="113" width="284" height="1"/>
+                        <color key="backgroundColor" systemColor="systemGray5Color"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="G18-2b-uCd"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="trailing" secondItem="ZWb-sA-w5s" secondAttribute="trailing" id="1fD-PT-NXm"/>
                     <constraint firstItem="w6c-lx-KT8" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="IAe-TD-FHm"/>
+                    <constraint firstItem="ZWb-sA-w5s" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="36" id="KlB-6q-DQq"/>
                     <constraint firstItem="dOy-Xb-54j" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="40" id="Od8-GZ-4c5"/>
                     <constraint firstItem="w6c-lx-KT8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="4" id="W6H-fU-isB"/>
                     <constraint firstItem="gCY-kV-SeS" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="dyT-Rt-4SD"/>
+                    <constraint firstAttribute="bottom" secondItem="ZWb-sA-w5s" secondAttribute="bottom" id="hX4-l3-h2y"/>
                     <constraint firstAttribute="trailingMargin" secondItem="dOy-Xb-54j" secondAttribute="trailing" constant="16" id="mbb-Da-jYo"/>
                     <constraint firstItem="gCY-kV-SeS" firstAttribute="leading" secondItem="w6c-lx-KT8" secondAttribute="trailing" constant="2" id="qGY-n0-OTS"/>
                     <constraint firstItem="dOy-Xb-54j" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="20" id="rsx-2k-lhf"/>
@@ -58,5 +69,8 @@
     </objects>
     <resources>
         <image name="Hash" width="30" height="30"/>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

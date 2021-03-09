@@ -31,23 +31,3 @@ extension JokeListCoordinator: ViewControllerCoordinator {
         )
     }
 }
-
-// MARK: - Factories
-extension JokeListCoordinator {
-    func makeJokeListViewController() -> JokeListViewController {
-        let viewController = R.storyboard.jokeListViewController.instantiateInitialViewController(
-            viewModel: resolve(JokeListViewModel.self)
-        )
-
-        viewController.coordinator = self
-
-        return viewController
-    }
-}
-
-// MARK: - JokeListViewEventHandling
-extension JokeListCoordinator: JokeListViewEventHandling {
-    func handle(event _: JokeListViewEvent) {
-        // TODO: Handle event
-    }
-}

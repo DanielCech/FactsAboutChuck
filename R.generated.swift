@@ -89,12 +89,21 @@ struct R: Rswift.Validatable {
   }
 
   #if os(iOS) || os(tvOS)
-  /// This `R.storyboard` struct is generated, and contains static references to 2 storyboards.
+  /// This `R.storyboard` struct is generated, and contains static references to 3 storyboards.
   struct storyboard {
+    /// Storyboard `JokeDetailViewController`.
+    static let jokeDetailViewController = _R.storyboard.jokeDetailViewController()
     /// Storyboard `JokeListViewController`.
     static let jokeListViewController = _R.storyboard.jokeListViewController()
     /// Storyboard `LaunchScreen`.
     static let launchScreen = _R.storyboard.launchScreen()
+
+    #if os(iOS) || os(tvOS)
+    /// `UIStoryboard(name: "JokeDetailViewController", bundle: ...)`
+    static func jokeDetailViewController(_: Void = ()) -> UIKit.UIStoryboard {
+      return UIKit.UIStoryboard(resource: R.storyboard.jokeDetailViewController)
+    }
+    #endif
 
     #if os(iOS) || os(tvOS)
     /// `UIStoryboard(name: "JokeListViewController", bundle: ...)`
@@ -337,12 +346,31 @@ struct _R: Rswift.Validatable {
   struct storyboard: Rswift.Validatable {
     static func validate() throws {
       #if os(iOS) || os(tvOS)
+      try jokeDetailViewController.validate()
+      #endif
+      #if os(iOS) || os(tvOS)
       try jokeListViewController.validate()
       #endif
       #if os(iOS) || os(tvOS)
       try launchScreen.validate()
       #endif
     }
+
+    #if os(iOS) || os(tvOS)
+    struct jokeDetailViewController: Rswift.StoryboardResourceWithInitialControllerType, Rswift.Validatable {
+      typealias InitialController = JokeDetailViewController
+
+      let bundle = R.hostingBundle
+      let name = "JokeDetailViewController"
+
+      static func validate() throws {
+        if #available(iOS 11.0, tvOS 11.0, *) {
+        }
+      }
+
+      fileprivate init() {}
+    }
+    #endif
 
     #if os(iOS) || os(tvOS)
     struct jokeListViewController: Rswift.StoryboardResourceWithInitialControllerType, Rswift.Validatable {

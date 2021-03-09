@@ -17,5 +17,5 @@
     }
   ],
   "validationContext": {},
-  "dependencies": ["Protocol/ViewModelType"]
+  "dependencies": ["Protocol/ViewModelType", "DependencyInjection/ViewModelAssembly"]
 }
