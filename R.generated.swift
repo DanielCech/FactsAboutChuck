@@ -380,8 +380,6 @@ struct _R: Rswift.Validatable {
       let name = "JokeListViewController"
 
       static func validate() throws {
-        if UIKit.UIImage(named: "dashboardTabBarIconGrayed", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'dashboardTabBarIconGrayed' is used in storyboard 'JokeListViewController', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "dashboardTabBarIconSelected", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'dashboardTabBarIconSelected' is used in storyboard 'JokeListViewController', but couldn't be loaded.") }
         if #available(iOS 11.0, tvOS 11.0, *) {
           if UIKit.UIColor(named: "App Colors/dashboardBackground", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'App Colors/dashboardBackground' is used in storyboard 'JokeListViewController', but couldn't be loaded.") }
         }

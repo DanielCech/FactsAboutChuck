@@ -8,7 +8,9 @@
 
 import Foundation
 
-enum JokeListViewEvent {}
+enum JokeListViewEvent {
+    case showJoke(Joke)
+}
 
 protocol JokeListViewEventHandling: AnyObject {
     func handle(event: JokeListViewEvent)

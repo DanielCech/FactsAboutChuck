@@ -11,8 +11,12 @@ import Swinject
 
 // MARK: - JokeListViewEventHandling
 extension JokeListCoordinator: JokeListViewEventHandling {
-    func handle(event _: JokeListViewEvent) {
-        // TODO: Handle event
+    func handle(event: JokeListViewEvent) {
+        switch event {
+        case let .showJoke(joke):
+            let detailController = makeJokeDetailViewController(joke: joke)
+            navigationController.pushViewController(detailController, animated: true)
+        }
     }
 }
 

@@ -14,5 +14,9 @@ final class ViewModelAssembly: Assembly {
         container.register(JokeListViewModel.self) { _ in
             JokeListViewModel()
         }.inObjectScope(.graph)
+
+        container.register(JokeDetailViewModel.self) { _, joke in
+            JokeDetailViewModel(joke: joke)
+        }.inObjectScope(.graph)
     }
 }

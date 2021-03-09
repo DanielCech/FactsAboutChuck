@@ -21,9 +21,12 @@ extension JokeListCoordinator {
         return viewController
     }
 
-    func makeJokeDetailViewController() -> JokeDetailViewController {
+    func makeJokeDetailViewController(joke: Joke) -> JokeDetailViewController {
         let viewController = R.storyboard.jokeDetailViewController.instantiateInitialViewController(
-            viewModel: resolve(JokeDetailViewModel.self)
+            viewModel: resolve(
+                JokeDetailViewModel.self,
+                argument: joke
+            )
         )
 
         viewController.coordinator = self

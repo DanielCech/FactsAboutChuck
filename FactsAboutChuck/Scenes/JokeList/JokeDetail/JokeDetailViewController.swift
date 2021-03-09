@@ -11,10 +11,15 @@ import RxSwift
 import UIKit
 
 class JokeDetailViewController: UIViewController, ViewModelContaining {
-    // MARK: Public Properties
-    weak var coordinator: JokeDetailViewEventHandling!
+    @IBOutlet private var jokeLabel: UILabel!
 
+    // MARK: Public Properties
+
+    // swiftlint:disable implicitly_unwrapped_optional
+    weak var coordinator: JokeDetailViewEventHandling!
     var viewModel: JokeDetailViewModel!
+    // swiftlint:enable implicitly_unwrapped_optional
+
     var disposeBag = DisposeBag()
 
     override func viewDidLoad() {
@@ -23,5 +28,7 @@ class JokeDetailViewController: UIViewController, ViewModelContaining {
         // Do any additional setup after loading the view.
     }
 
-    func bindToViewModel() {}
+    func bindToViewModel() {
+        jokeLabel.text = viewModel.joke.joke
+    }
 }

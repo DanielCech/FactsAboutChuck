@@ -64,11 +64,13 @@ extension JokeListViewController {
             .disposed(by: disposeBag)
     }
 
-    // swiftlint:disable:next cyclomatic_complexity
     func bindToCoordinator() {
         tableView.rx.modelSelected(JokeListSection.self)
-            .bind(onNext: { [weak self] _ in
-                // TODO:
+            .bind(onNext: { [weak self] item in
+                switch item {
+                case let .item(joke):
+                    self?.coordinator.handle(event: .showJoke(joke))
+                }
             })
             .disposed(by: disposeBag)
     }

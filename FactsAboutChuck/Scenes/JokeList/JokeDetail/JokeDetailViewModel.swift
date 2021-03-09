@@ -14,13 +14,17 @@ final class JokeDetailViewModel: ViewModelType {
     // MARK: Private properties
     private let disposeBag = DisposeBag()
 
+    private(set) var joke: Joke
+
     // MARK: Lifecycle
 
     deinit {
         print("Deinit \(self)")
     }
 
-    init() {}
+    init(joke: Joke) {
+        self.joke = joke
+    }
 }
 
 // MARK: - Input / output transformation

@@ -37,4 +37,16 @@ public extension Coordinator {
 
         return instance
     }
+
+    func resolve<Service, Argument>(_ serviceType: Service.Type, argument: Argument, synchronize: Bool = false) -> Service {
+        guard synchronize else {
+            // swiftlint:disable:next force_unwrapping
+            return assembler.resolver.resolve(serviceType, argument: argument)!
+        }
+
+        let container = assembler.resolver as? Container
+
+        // swiftlint:disable:next force_unwrapping
+        return container!.synchronize().resolve(serviceType, argument: argument)!
+    }
 }
